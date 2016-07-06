@@ -9,6 +9,7 @@ Author URI: http://huge-it.com
 License: GPL
 */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action('admin_menu', 'huge_it_lightbox_options_panel');
 register_activation_hook(__FILE__, 'hugeit_lightbox_activate');
 define('HUGEIT_PLUGIN_DIR', WP_PLUGIN_DIR . "/" . plugin_basename(dirname(__FILE__)));
