@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 include_once(HUGEIT_PLUGIN_DIR."/admin/model/huge_it_design_customization.php");
 class Controller {
 	public $model;

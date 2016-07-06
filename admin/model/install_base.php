@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	global $wpdb;
 	$hugeit_lightbox = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "hugeit_lightbox (
 		`id` int(11) NOT NULL AUTO_INCREMENT,
