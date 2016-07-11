@@ -1,10 +1,10 @@
 === Lightbox ===
 Contributors: Huge-IT
 Donate link: http://huge-it.com/lightbox/
-Tags: lightbox, Lightbox slider,slideshow, lightview, popup, popup images, colorbox, lightbox popup, onclick popup, popup box, fancybox, wordpress image lightbox, wordpress lightbox, wordpress popup, popup photo, photo, shadowbox, thickbox, open image, video lightbox, vimeo, youtube, wordpress youtube, popups, responsive lightbox, WP Lightbox, pop-up, light box, lightbox youtube, youtube player, video popup, quick popup, slimbox, simple popup, slideshow lightbox, Responsive Popup, popup lightbox, popup video, popup window, photos, lightbox gallery, gallery lightbox, image lightbox, popup bar,
+Tags: lightbox, popup, popup images, lightbox popup, popup box, wordpress lightbox, wordpress popup, video lightbox, responsive lightbox, WP Lightbox, light box, lightbox youtube,
 Requires at least: 3.0.1
 Tested up to: 4.5.3
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,15 @@ Lightbox is the perfect tool for viewing photos.
 
 https://www.youtube.com/watch?v=pKcpqKy5I70
 
-Huge-IT Lightbox is a perfect tool for viewing photos and videos. It is created especially for simplification of using, permits you to view larger version of images and videos and giving an interesting design. The video link can be from two sources, it is Vimeo and YouTube. With the help of slideshow and various styles, betray a unique image to your website. It is very easy in use. All you have to do is install the plugin and it will automaticly work. We have created it specially to make the process of using in the most simple way, so that even your child could manage it. The plugin gives the ability to:
+Huge-IT Lightbox is a perfect tool for viewing photos and videos.
+
+It is created especially for simplification of using, permits you to view larger version of images and videos and giving an interesting design.
+
+The video link can be from two sources, it is Vimeo and YouTube. With the help of slideshow and various styles, betray a unique image to your website.
+
+It is very easy in use. All you have to do is install the plugin and it will automaticly work.
+
+We have created it specially to make the process of using in the most simple way, so that even your child could manage it. The plugin gives the ability to:
 
 ### Adaptive Construction
 
@@ -33,7 +41,9 @@ Make your images popup more perfect using different lightbox types. They are 5 n
 
 ### Customization Settings
 
-Lightbox plugin offers a powerful selection of Customization’s, available as in free and pro version. If you’re running free version and would like to review the premium offer, navigate to General Options to see all of them.
+Lightbox plugin offers a powerful selection of Customization’s, available as in free and pro version.
+
+If you’re running free version and would like to review the premium offer, navigate to General Options to see all of them.
 
 ### Youtube Popup
 
@@ -103,34 +113,35 @@ If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.co
 
 = How to get a copy of most recent version? =
 
-Pro users can get update versions contacting us by info@huge-it.com.
-Free version  users will find update notification in their wordpress admin panel.
+*  Pro users can get update versions contacting us by info@huge-it.com.
+*  Free version  users will find update notification in their wordpress admin panel.
  
 
 = I have paid for pro version and didn’t get the link or file to update =
 
-If you made purchase and didn’t get the file, or file was corrupt, contact us by info@huge-it.com and send “order number”, we will check and send you the file  as soon as possible
+*  If you made purchase and didn’t get the file, or file was corrupt, contact us by info@huge-it.com and send “order number”, we will check and send you the file  as soon as possible
 
 
 = Have purchased pro version still get the announcement to buy the commercial version to change settings. What to do? =
 
-This can happen because of your browser’s cache files. Press ctrl+f5 (Chrome, FF) in order to clean them, if you use safari, etc., clean from browser settings 
+*  This can happen because of your browser’s cache files. Press ctrl+f5 (Chrome, FF) in order to clean them, if you use safari, etc., clean from browser settings 
 
 
 = Will I lose all my changes that I made in free version, if I update to pro version? =
-All kind of changes made in free version will remain, even if you delete the plugin
+
+*  All kind of changes made in free version will remain, even if you delete the plugin
 
 
 = How to see the title of the image in lightbox? =
 
-In order to add name to your image and see it in lightbox. 
-Add attribute title=”X” in <a></a> tag of image code, where X is the name, 
-Set “show the title” from Lightbox Options
+*  In order to add name to your image and see it in lightbox. 
+*  Add attribute title=”X” in <a></a> tag of image code, where X is the name, 
+*  Set “show the title” from Lightbox Options
 
 
 = I have already purchased Multi Site version, how do I upgrade it to Developer version, without buying it again? =
 
-If you have any pro version our portfolio gallery plugin of our products and want to upgrade it, you do not need to buy the new portfolio gallery once again, you only need to pay the difference price. For that simply contact info@huge-it.com or our online chat and we will help you to pay the difference.
+*  If you have any pro version our portfolio gallery plugin of our products and want to upgrade it, you do not need to buy the new portfolio gallery once again, you only need to pay the difference price. For that simply contact info@huge-it.com or our online chat and we will help you to pay the difference.
 
 
 = I’ve bought the commercial license,  installed the file but the Plugin seems to be still in free version, what to do? =
@@ -152,24 +163,27 @@ If you use multi site (have number of sites) when you install a plugin in main s
 
 = How to install the PRO version of Lightbox? =
 
-In order to install pro version of the plugin, simply follow these steps: delete your free version >	install the zip file | Plugins > add new > upload plugin >	clean your cache files |ctrl+f5|.
+*  In order to install pro version of the plugin, simply follow these steps: delete your free version >	install the zip file | Plugins > add new > upload plugin >	clean your cache files |ctrl+f5|.
 
-Don’t be afraid of deleting free version, because you will NOT lose your created portfolios.
+*  Don’t be afraid of deleting free version, because you will NOT lose your created portfolios.
 
 
 = I just buy the Personal version of the Light Box Plugin, how do I install on my website? =
 
-For installing the Lightbox plugin do the following: Install the zip file | Plugins > add new > upload plugin. When you activate the Lightbox Plugin it will automatically open  your images with lightbox.
+*  For installing the Lightbox plugin do the following: Install the zip file | Plugins > add new > upload plugin. When you activate the Lightbox Plugin it will automatically open  your images with lightbox.
 
 
 = How may I use Vimeo links to display in Lightbox? =
 
-Vimeo links can be displayed if you use pro version of the plugin. In pro version you need to wrap vimeo link with &lt;a href="link"&gt;text&lt;/a&gt;
+*  Vimeo links can be displayed if you use pro version of the plugin. In pro version you need to wrap vimeo link with &lt;a href="link"&gt;text&lt;/a&gt;
 
 
 If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 1.6.5 =
+*  Added credits and attribution in the source code refering the original authors.
 
 = 1.6.4 =
 *  Responsive bug fixed.
