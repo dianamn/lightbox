@@ -4,7 +4,7 @@ Donate link: http://huge-it.com/lightbox/
 Tags: lightbox, popup, popup images, lightbox popup, popup box, wordpress lightbox, wordpress popup, video lightbox, responsive lightbox, WP Lightbox, light box, lightbox youtube,
 Requires at least: 3.0.1
 Tested up to: 4.5.3
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -181,6 +181,10 @@ If you use multi site (have number of sites) when you install a plugin in main s
 If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 1.6.6 =
+*  1) Fiexed notice errors in php files.
+*  2) Fixed the bug of missing "Global Options page" of the plugin and brought the page back, with "Featured plugins" list.
 
 = 1.6.5 =
 *  Added credits and attribution in the source code refering the original authors.
