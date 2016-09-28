@@ -17,7 +17,7 @@ class Hugeit_Lightbox_Controller {
 	}
 
 	public function invoke() {
-		if ( $_GET['hugeit_task'] == 'save' ) {
+		if ( isset($_GET['hugeit_task']) && $_GET['hugeit_task'] == 'save' ) {
 			if (!isset($_REQUEST['hugeit_lightbox_save_settings_nonce']) || !wp_verify_nonce($_REQUEST['hugeit_lightbox_save_settings_nonce'], 'save_settings')) {
 				wp_die('Security check failure');
 			}
