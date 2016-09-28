@@ -15,7 +15,7 @@ require_once 'free_banner.php';
 <div id="lightbox-options-list">
 	<form action="<?php echo wp_nonce_url('admin.php?page=huge_it_light_box&hugeit_task=save', 'save_settings', 'hugeit_lightbox_save_settings_nonce') ?>" method="post" id="adminForm" name="adminForm">
 		<div class="options-block">
-			<h3>Internationalization</h3>
+			<h3>Main Features</h3>
 			<div class="has-background">
 				<label for="light_box_style">Lightbox style
 					<div class="help">?
@@ -92,9 +92,12 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false" name="params[light_box_title]" />
-				<input type="checkbox" id="light_box_title"  <?php if($hugeit_lightbox_values['light_box_title']  == 'true') echo 'checked="checked"'; ?>  name="params[light_box_title]" value="true" />
+				<input type="checkbox" id="light_box_title" <?php if($hugeit_lightbox_values['light_box_title']  == 'true') echo 'checked="checked"'; ?>  name="params[light_box_title]" value="true" />
 			</div>
-			<div class="hugeit-lightbox-pro-option">
+		</div>
+		<div class="options-block hugeit-lightbox-pro-option">
+			<h3>Additional Options<img src="<?php echo plugins_url('../../images/pro-icon.png', __FILE__) ?>" class="hugeit_lightbox_pro_logo"></h3>
+			<div class="has-background hugeit-lightbox-pro-option">
 				<label for="light_box_opacity">Overlay transparency
 					<div class="help">?
 						<div class="help-block">
@@ -104,11 +107,11 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<div class="slider-container">
-					<input  id="light_box_opacity" data-slider-highlight="true"  data-slider-values="0,10,20,30,40,50,60,70,80,90,100" type="text" data-slider="true" value="20" />
+					<input id="light_box_opacity" data-slider-highlight="true"  data-slider-values="0,10,20,30,40,50,60,70,80,90,100" type="text" data-slider="true" value="20" disabled="disabled" />
 					<span>20%</span>
 				</div>
 			</div>
-			<div class="has-background hugeit-lightbox-pro-option">
+			<div class="hugeit-lightbox-pro-option">
 				<label for="light_box_open">Auto open
 					<div class="help">?
 						<div class="help-block">
@@ -118,9 +121,9 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_open" value="true" />
+				<input type="checkbox" id="light_box_open" value="true" disabled="disabled" />
 			</div>
-			<div class="hugeit-lightbox-pro-option">
+			<div class="has-background hugeit-lightbox-pro-option">
 				<label for="light_box_overlayclose">Overlay close
 					<div class="help">?
 						<div class="help-block">
@@ -130,9 +133,9 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_overlayclose" value="true" checked="checked" />
+				<input type="checkbox" id="light_box_overlayclose" value="true" checked="checked" disabled="disabled" />
 			</div>
-			<div class="has-background hugeit-lightbox-pro-option">
+			<div class="hugeit-lightbox-pro-option">
 				<label for="light_box_esckey">EscKey close
 					<div class="help">?
 						<div class="help-block">
@@ -142,9 +145,9 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_esckey" value="true" />
+				<input type="checkbox" id="light_box_esckey" value="true" disabled="disabled" />
 			</div>
-			<div class="hugeit-lightbox-pro-option">
+			<div class="has-background hugeit-lightbox-pro-option">
 				<label for="light_box_arrowkey">Keyboard navigation
 					<div class="help">?
 						<div class="help-block">
@@ -154,9 +157,9 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_arrowkey" value="true" />
+				<input type="checkbox" id="light_box_arrowkey" value="true" disabled="disabled" />
 			</div>
-			<div class="has-background hugeit-lightbox-pro-option">
+			<div class="hugeit-lightbox-pro-option">
 				<label for="light_box_loop">Loop content
 					<div class="help">?
 						<div class="help-block">
@@ -166,9 +169,9 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_loop" value="true" checked="checked"/>
+				<input type="checkbox" id="light_box_loop" value="true" checked="checked" disabled="disabled" />
 			</div>
-			<div class="hugeit-lightbox-pro-option">
+			<div class="has-background hugeit-lightbox-pro-option">
 				<label for="light_box_closebutton">Show close button
 					<div class="help">?
 						<div class="help-block">
@@ -178,11 +181,12 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_closebutton" value="true" checked="checked" />
+				<input type="checkbox" id="light_box_closebutton" value="true" checked="checked" disabled="disabled" />
+			</div>
 			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
-			<h3>Dimensions</h3>
+			<h3>Dimensions<img src="<?php echo plugins_url('../../images/pro-icon.png', __FILE__) ?>" class="hugeit_lightbox_pro_logo"></h3>
 
 			<div class="has-background">
 				<label for="light_box_size_fix">Popup size fix
@@ -194,7 +198,7 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_size_fix" value="true" />
+				<input type="checkbox" id="light_box_size_fix" value="true" disabled="disabled" />
 			</div>
 
 			<div class="fixed-size" >
@@ -206,7 +210,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="light_box_width" value="500" class="text">
+				<input type="number"  id="light_box_width" value="500" class="text" disabled="disabled" />
 				<span>px</span>
 			</div>
 
@@ -219,7 +223,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="light_box_height" value="500" class="text">
+				<input type="number"  id="light_box_height" value="500" class="text" disabled="disabled" />
 				<span>px</span>
 			</div>
 
@@ -232,7 +236,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="light_box_maxwidth" value="768" class="text">
+				<input type="number"  id="light_box_maxwidth" value="768" class="text" disabled="disabled" />
 				<span>px</span>
 			</div>
 
@@ -245,7 +249,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="light_box_maxheight" value="500" class="text">
+				<input type="number"  id="light_box_maxheight" value="500" class="text"  disabled="disabled" />
 				<span>px</span>
 			</div>
 
@@ -258,7 +262,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="light_box_initialwidth" value="300" class="text">
+				<input type="number"  id="light_box_initialwidth" value="300" class="text"  disabled="disabled" />
 				<span>px</span>
 			</div>
 
@@ -271,12 +275,12 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="light_box_initialheight" value="100" class="text">
+				<input type="number"  id="light_box_initialheight" value="100" class="text"  disabled="disabled" />
 				<span>px</span>
 			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
-			<h3>Slideshow</h3>
+			<h3>Slideshow<img src="<?php echo plugins_url('../../images/pro-icon.png', __FILE__) ?>" class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
 				<label for="light_box_slideshow">Slideshow
 					<div class="help">?
@@ -287,7 +291,7 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_slideshow" value="true" checked="checked" />
+				<input type="checkbox" id="light_box_slideshow" value="true" checked="checked" disabled="disabled" />
 			</div>
 			<div>
 				<label for="light_box_slideshowspeed">Slideshow interval
@@ -298,7 +302,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="light_box_slideshowspeed" value="2500" class="text">
+				<input type="number"  id="light_box_slideshowspeed" value="2500" class="text" disabled="disabled" />
 				<span>ms</span>
 			</div>
 			<div class="has-background">
@@ -311,7 +315,7 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_slideshowauto" value="true" checked="checked" />
+				<input type="checkbox" id="light_box_slideshowauto" value="true" checked="checked" disabled="disabled" />
 			</div>
 			<div>
 				<label for="light_box_slideshowstart">Slideshow start button text
@@ -322,7 +326,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="text"  id="light_box_slideshowstart" value="start slideshow" class="text">
+				<input type="text"  id="light_box_slideshowstart" value="start slideshow" class="text"  disabled="disabled" />
 			</div>
 			<div class="has-background">
 				<label for="light_box_slideshowstop">Slideshow stop button text
@@ -333,11 +337,11 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="text"  id="light_box_slideshowstop" value="stop slideshow" class="text">
+				<input type="text"  id="light_box_slideshowstop" value="stop slideshow" class="text" disabled="disabled"/>
 			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option" style="margin-top:0px;">
-			<h3>Positioning</h3>
+			<h3>Positioning<img src="<?php echo plugins_url('../../images/pro-icon.png', __FILE__) ?>" class="hugeit_lightbox_pro_logo"></h3>
 
 			<div class="has-background">
 				<label for="light_box_fixed">Fixed position
@@ -349,7 +353,7 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="light_box_fixed" checked="checked" value="true" />
+				<input type="checkbox" id="light_box_fixed" checked="checked" value="true" disabled="disabled" />
 			</div>
 			<div class="has-height">
 				<label for="">Popup position
@@ -364,19 +368,19 @@ require_once 'free_banner.php';
 					<table class="bws_position_table">
 						<tbody>
 						<tr>
-							<td><input type="radio" value="1" id="slideshow_title_top-left" /></td>
-							<td><input type="radio" value="2" id="slideshow_title_top-center" /></td>
-							<td><input type="radio" value="3" id="slideshow_title_top-right" /></td>
+							<td><input type="radio" value="1" id="slideshow_title_top-left" disabled="disabled" /></td>
+							<td><input type="radio" value="2" id="slideshow_title_top-center" disabled="disabled" /></td>
+							<td><input type="radio" value="3" id="slideshow_title_top-right" disabled="disabled" /></td>
 						</tr>
 						<tr>
-							<td><input type="radio" value="4" id="slideshow_title_middle-left" ></td>
-							<td><input type="radio" value="5" id="slideshow_title_middle-center" checked="checked"/></td>
-							<td><input type="radio" value="6" id="slideshow_title_middle-right" /></td>
+							<td><input type="radio" value="4" id="slideshow_title_middle-left" disabled="disabled" /></td>
+							<td><input type="radio" value="5" id="slideshow_title_middle-center" checked="checked" disabled="disabled" /></td>
+							<td><input type="radio" value="6" id="slideshow_title_middle-right" disabled="disabled" /></td>
 						</tr>
 						<tr>
-							<td><input type="radio" value="7" id="slideshow_title_bottom-left" </td>
-							<td><input type="radio" value="8" id="slideshow_title_bottom-center"/></td>
-							<td><input type="radio" value="9" id="slideshow_title_bottom-right" /></td>
+							<td><input type="radio" value="7" id="slideshow_title_bottom-left" disabled="disabled" /></td>
+							<td><input type="radio" value="8" id="slideshow_title_bottom-center" disabled="disabled" /></td>
+							<td><input type="radio" value="9" id="slideshow_title_bottom-right" disabled="disabled" /></td>
 						</tr>
 						</tbody>
 					</table>
@@ -385,7 +389,7 @@ require_once 'free_banner.php';
 		</div>
 		<!-----------------------Lightbox Watermark html----------------------------------->
 		<div class="options-block hugeit-lightbox-pro-option">
-			<h3>Lightbox Watermark styles</h3>
+			<h3>Lightbox Watermark styles<img src="<?php echo plugins_url('../../images/pro-icon.png', __FILE__) ?>" class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
 				<label for="watermarket_image">Show Watermark Image
 					<div class="help">?
@@ -396,7 +400,7 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<input type="hidden" value="false"  />
-				<input type="checkbox" id="watermarket_image" value="true" />
+				<input type="checkbox" id="watermarket_image" value="true" disabled="disabled" />
 			</div>
 			<div class="has-height">
 				<label for="">Lightbox Watermark position
@@ -410,19 +414,19 @@ require_once 'free_banner.php';
 				<table class="bws_position_table">
 					<tbody>
 					<tr>
-						<td><input type="radio" value="1" id="lightbox_watermark_position-left" /></td>
-						<td><input type="radio" value="2" id="lightbox_watermark_position-center" /></td>
-						<td><input type="radio" value="3" id="lightbox_watermark_position-right" checked="checked" /></td>
+						<td><input type="radio" value="1" id="lightbox_watermark_position-left" disabled="disabled" /></td>
+						<td><input type="radio" value="2" id="lightbox_watermark_position-center" disabled="disabled" /></td>
+						<td><input type="radio" value="3" id="lightbox_watermark_position-right" checked="checked" disabled="disabled" /></td>
 					</tr>
 					<tr>
-						<td><input type="radio" value="4" id="lightbox_watermark_position-left" /></td>
-						<td style="visibility: hidden;"><input type="radio" value="4" id="lightbox_watermark_position-left" /></td>
-						<td><input type="radio" value="6" id="lightbox_watermark_position-right" /></td>
+						<td><input type="radio" value="4" id="lightbox_watermark_position-left" disabled="disabled" /></td>
+						<td style="visibility: hidden;"><input type="radio" value="4" id="lightbox_watermark_position-left" disabled="disabled" /></td>
+						<td><input type="radio" value="6" id="lightbox_watermark_position-right" disabled="disabled" /></td>
 					</tr>
 					<tr>
-						<td><input type="radio" value="7" id="lightbox_watermark_position-left" /></td>
-						<td><input type="radio" value="8" id="lightbox_watermark_position-center" /></td>
-						<td><input type="radio" value="9" id="lightbox_watermark_position-right" /></td>
+						<td><input type="radio" value="7" id="lightbox_watermark_position-left" disabled="disabled" /></td>
+						<td><input type="radio" value="8" id="lightbox_watermark_position-center" disabled="disabled" /></td>
+						<td><input type="radio" value="9" id="lightbox_watermark_position-right" disabled="disabled" /></td>
 					</tr>
 					</tbody>
 				</table>
@@ -437,7 +441,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number"  id="watermark_width" value="30" class="text">
+				<input type="number"  id="watermark_width" value="30" class="text" disabled="disabled" />
 				<span>px</span>
 			</div>
 			<div>
@@ -450,7 +454,7 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<div class="slider-container">
-					<input  id="watermark_transparency" data-slider-highlight="true"  data-slider-values="0,10,20,30,40,50,60,70,80,90,100" type="text" data-slider="true" value="100" />
+					<input  id="watermark_transparency" data-slider-highlight="true"  data-slider-values="0,10,20,30,40,50,60,70,80,90,100" type="text" data-slider="true" value="100" disabled="disabled" />
 					<span>100%</span>
 				</div>
 			</div>
@@ -464,7 +468,7 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<img src="<?php echo $hugeit_lightbox_values['watermark_img_src']; ?>" id="watermark_image" style="width:120px;height:auto;">
-				<input type="button" class="button wp-media-buttons-icon" style="margin-left: 63%;width: auto;display: inline-block;"  id="watermark_image_btn" value="Change Image">
+				<input type="button" class="button wp-media-buttons-icon" style="margin-left: 63%;width: auto;display: inline-block;"  id="watermark_image_btn" value="Change Image" disabled="disabled" />
 				<input type="hidden" id="img_watermark_hidden"  value="<?php echo $hugeit_lightbox_values['watermark_img_src']; ?>">
 			</div>
 	</form>

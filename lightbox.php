@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Huge IT lightbox
+Plugin Name: Huge IT Lightbox
 Plugin URI: http://huge-it.com/lightbox
 Description: Lightbox is the perfect tool for viewing photos.
 Version: 1.6.6
@@ -25,7 +25,6 @@ function hugeit_lightbox_options_panel() {
 	add_action( 'admin_print_styles-' . $page_option, 'hugeit_lightbox_option_admin_script' );
 
 }
-
 
 function hugeit_lightbox_option_admin_script() {
 	wp_enqueue_media();
@@ -94,19 +93,22 @@ function hugeit_lightbox_header() {
 		var lightbox_innerHeight = '<?php echo $paramssld['light_box_innerheight'];?>';
 		var lightbox_initialWidth = '<?php echo $paramssld['light_box_initialwidth'];?>';
 		var lightbox_initialHeight = '<?php echo $paramssld['light_box_initialheight'];?>';
+
+		var maxwidth = jQuery(window).width();
+
+		if (maxwidth ><?php echo $paramssld['light_box_maxwidth'];?>) {
+			maxwidth =<?php echo $paramssld['light_box_maxwidth'];?>;
+		}
+
 		var lightbox_maxWidth = <?php if($paramssld['light_box_size_fix'] == 'true'){ echo 'false';} else { echo $paramssld['light_box_maxwidth']; } ?>;
 		var lightbox_maxHeight = <?php if($paramssld['light_box_size_fix'] == 'true'){ echo 'false';} else { echo $paramssld['light_box_maxheight']; } ?>;
+
 		var lightbox_slideshow = <?php echo $paramssld['light_box_slideshow'];?>;
 		var lightbox_slideshowSpeed = <?php echo $paramssld['light_box_slideshowspeed'];?>;
 		var lightbox_slideshowAuto = <?php echo $paramssld['light_box_slideshowauto'];?>;
 		var lightbox_slideshowStart = "<?php echo $paramssld['light_box_slideshowstart'];?>";
 		var lightbox_slideshowStop = "<?php echo $paramssld['light_box_slideshowstop'];?>";
 		var lightbox_fixed = <?php echo $paramssld['light_box_fixed'];?>;
-		var logo_pos = <?php echo $paramssld['lightbox_watermark_position'];?>;
-		var logo_image_url = "<?php echo $paramssld['watermark_img_src'];?>";
-		var logo_width = <?php echo $paramssld['watermark_width'];?>;
-		var logo_opacity = <?php echo $paramssld['watermark_transparency'];?>;
-		var logo_show = <?php echo $paramssld['watermarket_image'];?>;
 		var lightbox_top, lightbox_bottom, lightbox_left, lightbox_right;
 
 		<?php

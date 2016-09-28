@@ -41,7 +41,7 @@ jQuery(document).ready(function() {
 		jQuery(this).parent().find('.help-block').removeClass('active');
 	});
 
-	jQuery('.hugeit-lightbox-pro-option').on('click', function(e) {
+	jQuery('.hugeit-lightbox-pro-option input, .hugeit-lightbox-pro-option select').on('focus change click', function(e) {
 		e.preventDefault();
 		alert('Some of Lightbox Settings are disabled in free version. If you need those functionalities, you need to buy the commercial version.');
 	});

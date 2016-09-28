@@ -94,7 +94,16 @@ if ( end( $update_p1 )->name === 'light_box_style' ) {
 		)
 	);
 }
-        
+
+$wpdb->insert(
+	$table_name,
+	array(
+		'name' => 'watermark_img_src',
+		'title' => 'Watermark image source',
+		'value' => plugins_url() . '/lightbox/images/No-image-found.jpg',
+	)
+);
+
 $update_p2=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."hugeit_lightbox WHERE name='light_box_closebutton'");
 
 if($update_p2->value=='false') {

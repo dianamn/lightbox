@@ -247,9 +247,7 @@
 .free_version_banner {
 	position:relative;
 	display:block;
-	background-image:url('../../images/wp_banner_bg.jpg');
-	background-position:top left;
-	background-repeat:repeat;
+	background: url('../../images/wp_banner_bg.jpg') repeat top left;
 	overflow:hidden;
 }
 
@@ -286,7 +284,7 @@
 	font-weight:600;
 	font-style:italic;
 	color:#ffffff;
-	line-height:30.5px;
+	line-height:30px;
 	text-decoration:underline;
 }
 
@@ -539,4 +537,8 @@
 	.free_version_banner .description_text {
 		margin-top: 40px;
 	}
+}
+
+.hugeit_lightbox_pro_logo {
+	margin-left: 4px;
 }
