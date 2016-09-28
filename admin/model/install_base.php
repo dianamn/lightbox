@@ -75,6 +75,7 @@ $hugeit_lightbox = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "hugeit_light
 	('light_box_fastiframe', 'Light box fastIframe', 'true'),
 	('light_box_preloading', 'Light box preloading', 'true'),
 	('slider_title_position', 'Slider title position', '5'),
+	('watermark_img_src', 'Watermark image source', '" . plugins_url() . "/lightbox/images/No-image-found.jpg'),
 	('light_box_style', 'Light Box style', '1')";
 if ( ! $wpdb->get_var( "SELECT count(*) FROM " . $wpdb->prefix . "hugeit_lightbox" ) ) {
 	$wpdb->query( $sql_hugeit_lightbox );
@@ -94,15 +95,6 @@ if ( end( $update_p1 )->name === 'light_box_style' ) {
 		)
 	);
 }
-
-$wpdb->insert(
-	$table_name,
-	array(
-		'name' => 'watermark_img_src',
-		'title' => 'Watermark image source',
-		'value' => plugins_url() . '/lightbox/images/No-image-found.jpg',
-	)
-);
 
 $update_p2=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."hugeit_lightbox WHERE name='light_box_closebutton'");
 
