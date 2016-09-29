@@ -202,15 +202,17 @@
 	float: right;
 	width: 35px;
 	height: 28px;
-	padding: 0 40px 0 0;
+	padding: 0 0 0 40px;
 	background: url(../../images/view.style.png) left center no-repeat;
+	background-size: 25px 21px;
+	background-position: 90% center;
 }
 
 #view-style-block ul {
 	display: none;
 	z-index: 1000;
 	position: absolute;
-	left: 35px;
+	left: 61px;
 	top: 0;
 }
 

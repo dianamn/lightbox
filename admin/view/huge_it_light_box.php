@@ -180,9 +180,8 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="hidden" value="false"  />
+				<input type="hidden" value="false" />
 				<input type="checkbox" id="light_box_closebutton" value="true" checked="checked" disabled="disabled" />
-			</div>
 			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
