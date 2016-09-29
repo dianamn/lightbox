@@ -200,18 +200,36 @@
 #view-style-block {
 	position: relative;
 	float: right;
-	width: 35px;
-	height: 28px;
-	padding: 0 40px 0 0;
-	background: url(../../images/view.style.png) left center no-repeat;
+	cursor: pointer;
+}
+
+#view-style-block .view-style-eye {
+	display:block;
+	height: 25px;
+	margin: 3px 0 0 0;
+	padding: 0 6px 0 28px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	color: #fff;
+	background-color: #0c898a;
+	background-image: url(../../images/view.style.png);
+	background-repeat: no-repeat;
+	background-position: 6px center;
+	line-height: 25px;
+	border-radius: 10px;
+}
+
+#view-style-block .view-style-eye:hover {
+	background-color: #08a9aa;
 }
 
 #view-style-block ul {
 	display: none;
 	z-index: 1000;
 	position: absolute;
-	left: 35px;
-	top: 0;
+	left: 18px;
+	top: 15px;
 }
 
 #view-style-block:hover ul {

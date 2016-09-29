@@ -7,6 +7,7 @@ Version: 1.6.6
 Author: Huge-IT
 Author URI: http://huge-it.com
 License: GPL
+Text Domain: hugeit_lightbox
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -36,6 +37,7 @@ function hugeit_lightbox_option_admin_script() {
 	wp_enqueue_style( "admin_css", plugins_url( "css/admin/admin.style.css", __FILE__ ), false );
 	wp_enqueue_script( "admin_js", plugins_url( "js/admin/admin.js", __FILE__ ), false );
 	wp_enqueue_script( 'param_block2', plugins_url( "js/admin/jscolor/jscolor.js", __FILE__ ) );
+	wp_enqueue_style( 'open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans' );
 }
 
 function hugeit_lightbox() {

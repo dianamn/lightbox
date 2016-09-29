@@ -33,7 +33,7 @@ require_once 'free_banner.php';
 					<option <?php if($hugeit_lightbox_values['light_box_style'] == '5') echo 'selected="selected"';  ?> value="5">5</option>
 				</select>
 				<div id="view-style-block">
-					<ul>
+					<span class="view-style-eye"><?php _e( 'Preview', 'hugeit_lightbox' ); ?></span><ul>
 						<li data-id="1" class="active"><img src="<?php echo plugins_url('../../images/view1.jpg', __FILE__); ?>"></li>
 						<li data-id="2"><img src="<?php echo plugins_url('../../images/view2.jpg', __FILE__); ?>"></li>
 						<li data-id="3"><img src="<?php echo plugins_url('../../images/view3.jpg', __FILE__); ?>"></li>
@@ -182,7 +182,6 @@ require_once 'free_banner.php';
 				</label>
 				<input type="hidden" value="false"  />
 				<input type="checkbox" id="light_box_closebutton" value="true" checked="checked" disabled="disabled" />
-			</div>
 			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
