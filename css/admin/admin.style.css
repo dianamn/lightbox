@@ -34,6 +34,22 @@
 	background: #f9f9f9;
 }
 
+.hugeit-lightbox-pro-option {
+	pointer-events: none;
+}
+
+.hugeit-lightbox-pro-option:after {
+	content: '';
+	display:block;
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	background: #f9f9f9;
+	opacity: 0.6;
+}
+
 .options-block > div {
 	position: relative;
 	clear: both;
@@ -206,7 +222,7 @@
 #view-style-block .view-style-eye {
 	display:block;
 	height: 25px;
-	margin: 3px 0 0 0;
+	margin: 3px 5px 0 0;
 	padding: 0 6px 0 28px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
@@ -256,10 +272,6 @@
 .hugeit_lightbox_pro_logo {
 	margin: 20px auto 0 16px;
 	text-align: left !important;
-}
-
-.hugeit-lightbox-pro-option {
-	opacity: 0.6;
 }
 
 .free_version_banner {
