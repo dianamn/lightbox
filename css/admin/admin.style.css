@@ -223,15 +223,12 @@
 	display:block;
 	height: 25px;
 	margin: 3px 5px 0 0;
-	padding: 0 6px 0 28px;
+	padding: 0 28px 0 6px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
 	font-weight: 400;
 	color: #fff;
-	background-color: #0c898a;
-	background-image: url(../../images/view.style.png);
-	background-repeat: no-repeat;
-	background-position: 6px center;
+	background: #0c898a url(../../images/view.style.png) calc(100% - 6px) center no-repeat;
 	line-height: 25px;
 	border-radius: 10px;
 }
