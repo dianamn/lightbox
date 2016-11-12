@@ -248,6 +248,9 @@ function hugeit_lightbox_header() {
 
 add_filter( 'wp_get_attachment_link', 'hugeit_lightbox_add_title_attachment_link', 10, 2 );
 function hugeit_lightbox_add_title_attachment_link( $link, $id = NULL ) {
+	if ( absint( $id ) != $id ) {
+		wp_die('"id" parameter is required to be not negative integer');
+	}
 	$id         = intval( $id );
 	$_post      = get_post( $id );
 	$post_title = esc_attr( $_post->post_title );

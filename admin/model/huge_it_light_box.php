@@ -41,7 +41,7 @@ class Hugeit_Lightbox_Model {
 				}
 				$wpdb->update(
 					$wpdb->prefix . 'hugeit_lightbox',
-					array( 'value' => $value ),
+					array( 'value' => sanitize_text_field( $value ) ),
 					array( 'name' => $key ),
 					'%s'
 				);
