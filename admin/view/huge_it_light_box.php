@@ -67,7 +67,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number" name="params[light_box_speed]" id="light_box_speed" value="<?php echo $hugeit_lightbox_values['light_box_speed']; ?>" class="text">
+				<input type="number" name="params[light_box_speed]" id="light_box_speed" value="<?php echo esc_attr($hugeit_lightbox_values['light_box_speed']); ?>" class="text">
 				<span>ms</span>
 			</div>
 			<div>
@@ -79,7 +79,7 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number" name="params[light_box_fadeout]" id="light_box_fadeout" value="<?php echo $hugeit_lightbox_values['light_box_fadeout']; ?>" class="text">
+				<input type="number" name="params[light_box_fadeout]" id="light_box_fadeout" value="<?php echo esc_attr($hugeit_lightbox_values['light_box_fadeout']); ?>" class="text">
 				<span>ms</span>
 			</div>
 			<div class="has-background">
