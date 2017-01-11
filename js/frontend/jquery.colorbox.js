@@ -1,74 +1,95 @@
 /*!
-	This is a fork of Colorbox v1.5.10 - 2014-06-26
+	Colorbox v1.5.10 - 2014-06-26
 	jQuery lightbox and modal window plugin
 	(c) 2014 Jack Moore - http://www.jacklmoore.com/colorbox
 	license: http://www.opensource.org/licenses/mit-license.php
 */
 
+jQuery.each(hugeit_lightbox_obj, function(index, value) {
+	if(value.indexOf('true')>-1 || value.indexOf('false')>-1)
+		hugeit_lightbox_obj[index] = value == "true";
+});
+jQuery.each(hugeit_gen_lightbox_obj, function(index, value) {
+	if(value.indexOf('true')>-1 || value.indexOf('false')>-1)
+		hugeit_gen_lightbox_obj[index] = value == "true";
+});
+
+var maxWidth = jQuery(window).width();
+if(maxWidth > hugeit_lightbox_obj.hugeit_lightbox_maxwidth){
+	maxWidth = hugeit_lightbox_obj.hugeit_lightbox_maxwidth;
+}
+if(hugeit_lightbox_obj.hugeit_lightbox_sizeFix == 'true'){
+	hugeit_lightbox_obj.hugeit_lightbox_maxwidth = '100%';
+	hugeit_lightbox_obj.hugeit_lightbox_maxheight = '100%';
+}
+else{
+	hugeit_lightbox_obj.hugeit_lightbox_maxwidth = maxWidth;
+}
+
 (function ($, document, window) {
 	var
 	// Default settings object.
-	defaults = {
-		// data sources
-		html: lightbox_html,
-		photo: lightbox_photo,
-		iframe: false,
-		inline: false,
-		
-		// behavior and appearance
-		transition: lightbox_transition,
-		speed: lightbox_speed,
-		fadeOut: lightbox_fadeOut,
-		width: lightbox_width,
-		initialWidth: lightbox_initialWidth,
-		innerWidth: lightbox_innerWidth,
-		maxWidth: lightbox_maxWidth,
-		height: lightbox_height,
-		initialHeight: lightbox_initialHeight,
-		innerHeight: lightbox_innerHeight,
-		maxHeight: lightbox_maxHeight,
-		scalePhotos: true,
-		scrolling: lightbox_scrolling,
-		opacity: lightbox_opacity,
-		preloading: true,
-		className: false,
-		overlayClose: lightbox_overlayClose,
-		escKey: lightbox_escKey,
-		arrowKey: lightbox_arrowKey,
-		top: lightbox_top,
-		bottom: lightbox_bottom,
-		left: lightbox_left,
-		right: lightbox_right,
-		fixed: lightbox_fixed,
-		data: undefined,
-		closeButton: lightbox_closeButton,
-		fastIframe: lightbox_fastIframe,
-		open: lightbox_open,
-		reposition: lightbox_reposition,
-		loop: lightbox_loop,
-		slideshow: lightbox_slideshow,
-		slideshowAuto: lightbox_slideshowAuto,
-		slideshowSpeed: lightbox_slideshowSpeed,
-		slideshowStart: lightbox_slideshowStart,
-		slideshowStop: lightbox_slideshowStop,
-		photoRegex: /\.(gif|png|jp(e|g|eg)|bmp|ico|webp|jxr|svg)((#|\?).*)?$/i,
+		defaults = {
+			// data sources
+			html: hugeit_lightbox_obj.hugeit_lightbox_html,
+			photo: hugeit_lightbox_obj.hugeit_lightbox_photo,
+			iframe: false,
+			inline: false,
 
-		// alternate image paths for high-res displays
-		retinaImage: lightbox_retinaImage,
-		retinaUrl: lightbox_retinaUrl,
-		retinaSuffix: lightbox_retinaSuffix,
+			// behavior and appearance
+			transition: hugeit_gen_lightbox_obj.hugeit_lightbox_transition,
+			speed: hugeit_gen_lightbox_obj.hugeit_lightbox_speed,
+			fadeOut: hugeit_gen_lightbox_obj.hugeit_lightbox_fadeout,
+			width: hugeit_lightbox_obj.hugeit_lightbox_width,
+			initialWidth: hugeit_lightbox_obj.hugeit_lightbox_initialwidth,
+			innerWidth: hugeit_lightbox_obj.hugeit_lightbox_innerwidth,
+			maxWidth: hugeit_lightbox_obj.hugeit_lightbox_maxwidth,
+			height: hugeit_lightbox_obj.hugeit_lightbox_height,
+			initialHeight: hugeit_lightbox_obj.hugeit_lightbox_initialheight,
+			innerHeight: hugeit_lightbox_obj.hugeit_lightbox_innerheight,
+			maxHeight: hugeit_lightbox_obj.hugeit_lightbox_maxheight,
+			scalePhotos: true,
+			scrolling: hugeit_lightbox_obj.hugeit_lightbox_scrolling,
+			opacity: hugeit_lightbox_obj.hugeit_lightbox_opacity,
+			preloading: true,
+			className: false,
+			overlayClose: hugeit_lightbox_obj.hugeit_lightbox_overlayclose,
+			escKey: hugeit_lightbox_obj.hugeit_lightbox_esckey,
+			arrowKey: hugeit_lightbox_obj.hugeit_lightbox_arrowkey,
+			top: hugeit_lightbox_obj.hugeit_lightbox_top,
+			bottom: hugeit_lightbox_obj.hugeit_lightbox_bottom,
+			left: hugeit_lightbox_obj.hugeit_lightbox_left,
+			right: hugeit_lightbox_obj.hugeit_lightbox_right,
+			fixed: hugeit_lightbox_obj.hugeit_lightbox_fixed,
+			data: undefined,
+			closeButton: hugeit_lightbox_obj.hugeit_lightbox_closebutton,
+			fastIframe: hugeit_lightbox_obj.hugeit_lightbox_fastiframe,
+			open: hugeit_lightbox_obj.hugeit_lightbox_open,
+			reposition: hugeit_lightbox_obj.hugeit_lightbox_reposition,
+			loop: hugeit_lightbox_obj.hugeit_lightbox_loop,
+			slideshow: hugeit_lightbox_obj.hugeit_lightbox_slideshow,
+			slideshowAuto: hugeit_lightbox_obj.hugeit_lightbox_slideshowauto,
+			slideshowSpeed: hugeit_lightbox_obj.hugeit_lightbox_slideshowspeed,
+			slideshowStart: hugeit_lightbox_obj.hugeit_lightbox_slideshowstart,
+			slideshowStop: hugeit_lightbox_obj.hugeit_lightbox_slideshowstop,
+			photoRegex: /\.(gif|png|jp(e|g|eg)|bmp|ico|webp|jxr|svg)((#|\?).*)?$/i,
 
-		// internationalization
-		current: "image {current} of {total}",
-		previous: lightbox_previous,
-		next: lightbox_next,
-		close: "close",
-		xhrError: "This content failed to load.",
-		imgError: "This image failed to load.",
+			// alternate image paths for high-res displays
+			retinaImage: hugeit_lightbox_obj.hugeit_lightbox_retinaimage,
+			retinaUrl: hugeit_lightbox_obj.hugeit_lightbox_retinaurl,
+			retinaSuffix: hugeit_lightbox_obj.hugeit_lightbox_retinasuffix,
 
-		// accessbility
-		returnFocus: lightbox_returnFocus,
-		trapFocus: lightbox_trapFocus,
+			// internationalization
+			current: "image {current} of {total}",
+			previous: hugeit_lightbox_obj.hugeit_lightbox_previous,
+			next: hugeit_lightbox_obj.hugeit_lightbox_next,
+			close: "close",
+			xhrError: "This content failed to load.",
+			imgError: "This image failed to load.",
+
+			// accessbility
+			returnFocus: hugeit_lightbox_obj.hugeit_lightbox_returnfocus,
+			trapFocus: hugeit_lightbox_obj.hugeit_lightbox_trapfocus,
 
 		// callbacks
 		onOpen: false,
@@ -84,12 +105,11 @@
 			// using this.href would give the absolute url, when the href may have been inteded as a selector (e.g. '#container')
 			return $(this).attr('href');
 		},
-		
+
 		title: function() {
-		//alert(lightbox_title);
-		if(lightbox_title == true){
-			return this.title;
-		}
+			if (hugeit_lightbox_obj.hugeit_lightbox_title == true) {
+				return this.title;
+			}
 		}
 	},
 
@@ -146,7 +166,6 @@
 	requests = 0,
 	previousCSS = {},
 	init;
-
 	// ****************
 	// HELPER FUNCTIONS
 	// ****************
@@ -975,8 +994,8 @@
 							photo.setAttribute(val, attr);
 						}
 					});
-
-					var isRetina = false;
+                    
+                    var isRetina = false;
 					if (settings.get('retinaImage') && window.devicePixelRatio > 1) {
                         isRetina = true;
                         if(isRetina){
@@ -1045,7 +1064,7 @@
                             }
                         }
                     }
-
+                    
 					photo.style.width = photo.width + 'px';
 					photo.style.height = photo.height + 'px';
 					prep(photo);
@@ -1130,3 +1149,36 @@
 	publicMethod.settings = defaults;
 
 }(jQuery, document, window));
+
+var logo_div = document.createElement('div');
+var img = document.createElement('img');
+jQuery(logo_div).attr("id","lightbox_logo");
+jQuery(img).attr('src',hugeit_lightbox_obj.hugeit_lightbox_watermark_img_src);
+jQuery(logo_div).append(img);
+jQuery(logo_div).attr("class","huge_it_" + hugeit_lightbox_obj.hugeit_lightbox_watermark_position);
+jQuery(img).width(hugeit_lightbox_obj.hugeit_lightbox_watermark_width);
+logo_opacity = hugeit_lightbox_obj.hugeit_lightbox_watermark_opacity * 0.01;
+jQuery(logo_div).css("opacity",logo_opacity);
+jQuery(document).ready(function(){
+if(hugeit_lightbox_obj.hugeit_lightbox_watermarket_image == true){
+    
+        jQuery("#cboxNext").click(function(){
+            setTimeout(function(){
+                jQuery("#cboxLoadedContent").before(logo_div);
+          0},500);
+        });
+        jQuery("#cboxPrevious").click(function(){
+            setTimeout(function(){
+                jQuery("#cboxLoadedContent").before(logo_div);
+          0},500);
+        });
+        jQuery(".cboxElement").click(function (){
+            setTimeout(function(){
+                jQuery("#cboxLoadedContent").before(logo_div);
+          0},500);
+        });
+
+        }
+    });
+
+

@@ -1,4 +1,20 @@
 jQuery(document).ready(function() {
+	jQuery('#lightbox_type input').change(function () {
+		jQuery('#lightbox_type input').parent().removeClass('active');
+		jQuery(this).parent().addClass('active');
+		if(jQuery(this).val() == 'old_type'){
+			jQuery('#lightbox-options-list').addClass('active');
+			jQuery('#new-lightbox-options-list').removeClass('active');
+		}
+		else{
+			jQuery('#lightbox-options-list').removeClass('active');
+			jQuery('#new-lightbox-options-list').addClass('active');
+		}
+		jQuery('#lightbox_type input').prop('checked',false);
+		if(!jQuery(this).prop('checked')){
+			jQuery(this).prop('checked',true);
+		}
+	});
 	popupsizes(jQuery('#light_box_size_fix'));
 	function popupsizes(checkbox) {
 		if (checkbox.is(':checked')) {
