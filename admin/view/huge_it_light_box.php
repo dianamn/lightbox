@@ -114,8 +114,9 @@ require_once 'free_banner.php';
 				} ?> name="params[hugeit_lightbox_loop_new]" value="true"/>
 			</div>
 		</div>
-		<div class="options-block">
-			<h3>Dimensions</h3>
+		<div class="options-block hugeit-lightbox-pro-option">
+			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
+							   class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
 				<label for="hugeit_lightbox_width_new">Lightbox Width
 					<div class="help">?
@@ -125,8 +126,8 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number" name="params[hugeit_lightbox_width_new]" id="hugeit_lightbox_width_new"
-				       value="<?php echo $hugeit_resp_lightbox_values['hugeit_lightbox_width_new']; ?>"
+				<input type="number"
+				       value="<?php echo $hugeit_resp_default_lightbox_values['hugeit_lightbox_width_new']; ?>"
 				       class="text">
 				<span>%</span>
 			</div>
@@ -139,8 +140,8 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number" name="params[hugeit_lightbox_height_new]" id="hugeit_lightbox_height_new"
-				       value="<?php echo $hugeit_resp_lightbox_values['hugeit_lightbox_height_new']; ?>"
+				<input type="number"
+				       value="<?php echo $hugeit_resp_default_lightbox_values['hugeit_lightbox_height_new']; ?>"
 				       class="text">
 				<span>%</span>
 			</div>
@@ -153,8 +154,8 @@ require_once 'free_banner.php';
 						</div>
 					</div>
 				</label>
-				<input type="number" name="params[hugeit_lightbox_videoMaxWidth]" id="hugeit_lightbox_videoMaxWidth"
-				       value="<?php echo $hugeit_resp_lightbox_values['hugeit_lightbox_videoMaxWidth']; ?>"
+				<input type="number"
+				       value="<?php echo $hugeit_resp_default_lightbox_values['hugeit_lightbox_videoMaxWidth']; ?>"
 				       class="text">
 				<span>px</span>
 			</div>

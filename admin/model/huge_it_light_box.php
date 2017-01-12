@@ -125,6 +125,9 @@ class Hugeit_Lightbox_Model {
 			'hugeit_lightbox_prevHtml'                      => '',     //not used
 			'hugeit_lightbox_sequence_info'                 => 'image',
 			'hugeit_lightbox_sequenceInfo'                  => 'of',
+			'hugeit_lightbox_width_new'                     => '100',
+			'hugeit_lightbox_height_new'                    => '100',
+			'hugeit_lightbox_videoMaxWidth'                 => '790',
 			'hugeit_lightbox_slideshow_new'                 => 'false',
 			'hugeit_lightbox_slideshow_auto_new'            => 'false',
 			'hugeit_lightbox_slideshow_speed_new'           => '2500',
@@ -170,9 +173,6 @@ class Hugeit_Lightbox_Model {
 			'hugeit_lightbox_speed_new'                     => '600',
 			'hugeit_lightbox_overlayClose_new'              => 'true',
 			'hugeit_lightbox_loop_new'                      => 'true',
-			'hugeit_lightbox_width_new'                     => '100',
-			'hugeit_lightbox_height_new'                    => '100',
-			'hugeit_lightbox_videoMaxWidth'                 => '790',
 		);
 		return $options;
 	}
