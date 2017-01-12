@@ -4,7 +4,7 @@
     jQuery.each(hugeit_gen_resp_lightbox_obj, function(index, value) {
         if(value.indexOf('true')>-1 || value.indexOf('false')>-1)
             hugeit_gen_resp_lightbox_obj[index] = value == "true";
-    });console.log(hugeit_resp_lightbox_obj);
+    });
     function Lightbox(element, options) {
 
         this.el = element;
@@ -344,7 +344,7 @@
                 $prev.css({'left' : '40%'});
                 break;
             case 'view3':
-                $arrows.css({'top' : '14px', 'z-index' : '1090'});
+                $arrows.css({'top' : '14px', 'z-index' : '1090000'});
                 $next.css({'right' : '20px'});
                 $prev.css({'right' : '55px'});
                 $('.rwd-title').css({'text-align' : 'left','border-top' : '1px solid #999'});

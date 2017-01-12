@@ -27,7 +27,7 @@ if (!get_option('hugeit_lightbox_title')) {
 }
 
 $resp_lightbox_options = $model->general_resp_options();
-if (!get_option('hugeit_lightbox_videoMaxWidth')) {
+if (!get_option('hugeit_lightbox_loop_new')) {
     foreach ($resp_lightbox_options as $name => $value) {
         update_option($name, $value);
     }
