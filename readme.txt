@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: http://huge-it.com/lightbox/
 Tags: lightbox, popup, popup images, lightbox popup, popup box, wordpress lightbox, wordpress popup, video lightbox, responsive lightbox, WP Lightbox, light box, lightbox youtube,
 Requires at least: 3.0.1
-Tested up to: 4.6.1
-Stable tag: 1.6.7
+Tested up to: 4.7.1
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,9 +15,11 @@ Lightbox is the perfect tool for viewing photos.
 ### Wordpress Lightbox
 
 * [Wordpress Lightbox](http://huge-it.com/lightbox/)
-* [Demo](http://huge-it.com/wordpress-lightbox-demo/#plugin_demo_wrapper)
-* [FAQ](http://huge-it.com/wordpress-lightbox-faq/)
-* [User Manual](http://huge-it.com/wordpress-lightbox-user-manual/)
+* [Lightbox Demo](http://huge-it.com/wordpress-lightbox-demo/#plugin_demo_wrapper)
+* [Lightbox FAQ](http://huge-it.com/wordpress-lightbox-faq/)
+* [Lightbox User Manual](http://huge-it.com/wordpress-lightbox-user-manual/)
+* [Lightbox Support](http://huge-it.com/contact-us/)
+* [Lightbox Github Project](https://github.com/Huge-IT/lightbox)
 
 https://www.youtube.com/watch?v=pKcpqKy5I70
 
@@ -181,6 +183,13 @@ If you use multi site (have number of sites) when you install a plugin in main s
 If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.0.0 =
+* 1) Added a new/second, more functional light-box with wide range of options .
+* 2) Added featured plugins and licensing pages.
+
+= 1.6.8 =
+* Fixed issue with cross site scripting (XSS).
 
 = 1.6.7 =
 **In the series of updates we will go through our plugins one by one and fix all technical issues with our code in order to meet the WordPress Coding Standards. These are the major updates that had been implemented to Lightbox in this new version of the plugin.**
