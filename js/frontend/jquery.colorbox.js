@@ -1000,22 +1000,22 @@ else{
                         isRetina = true;
                         if(isRetina){
                             if(photo.width < jQuery(window).width() && photo.height < jQuery(window).height()){
-                                photo.height = photo.height / window.devicePixelRatio;
-                                photo.width = photo.width / window.devicePixelRatio;
+                                photo.height = 2 * photo.height / window.devicePixelRatio;
+                                photo.width = 2 * photo.width / window.devicePixelRatio;
                             }else{
                                 if(jQuery(window).width() < jQuery(window).height()){
                                        var k = (photo.height / window.devicePixelRatio) / (photo.width / window.devicePixelRatio);
-                                       photo.height = k*jQuery(window).width() - 70; 
-                                       photo.width = jQuery(window).width() - 70; 
+                                       photo.height = 2 * (k*jQuery(window).width() - 70);
+                                       photo.width = 2 * (jQuery(window).width() - 70);
                                 }else{
                                     if(photo.height > photo.width){
                                        var k = (photo.width / window.devicePixelRatio) / (photo.height / window.devicePixelRatio);
-                                       photo.height = jQuery(window).height() - 70;
-                                       photo.width = k*jQuery(window).height() - 70; 
+                                       photo.height = 2 * (jQuery(window).height() - 70);
+                                       photo.width = 2 * (k*jQuery(window).height() - 70);
                                     }else{
                                         var k = (photo.height / window.devicePixelRatio) / (photo.width / window.devicePixelRatio);
-                                        photo.height = k*jQuery(window).width() - 70; 
-                                        photo.width = jQuery(window).width() - 70;
+                                        photo.height = 2 * (k*jQuery(window).width() - 70);
+                                        photo.width = 2 * (jQuery(window).width() - 70);
                                     }
                                        
                                 }
