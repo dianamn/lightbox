@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: http://huge-it.com/lightbox/
 Tags: lightbox, popup, popup images, lightbox popup, popup box, wordpress lightbox, wordpress popup, video lightbox, responsive lightbox, WP Lightbox, light box, lightbox youtube,
 Requires at least: 3.0.1
-Tested up to: 4.7.1
-Stable tag: 2.0.0
+Tested up to: 4.7.2
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -183,6 +183,11 @@ If you use multi site (have number of sites) when you install a plugin in main s
 If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.0.1 =
+* 1) Fixed the UX/UI issues on Safari.
+* 2) Fixed the issue in Gallery plugin pop-up views, where the view was openindg in new lightbox only.
+* 3) Made some style changes in the views of the lightbox.
 
 = 2.0.0 =
 * 1) Added a new/second, more functional light-box with wide range of options .
