@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Huge IT Lightbox
-Plugin URI: http://huge-it.com/lightbox
+Plugin URI: https://huge-it.com/lightbox
 Description: Lightbox is the perfect tool for viewing photos.
-Version: 2.0.1
+Version: 2.0.2
 Author: Huge-IT
-Author URI: http://huge-it.com
+Author URI: https://huge-it.com
 License: GPL
 */
 

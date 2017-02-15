@@ -1,12 +1,12 @@
 === Lightbox ===
 Contributors: Huge-IT
-Donate link: http://huge-it.com/lightbox/
+Donate link: https://huge-it.com/lightbox/
 Tags: lightbox, popup, popup images, lightbox popup, popup box, wordpress lightbox, wordpress popup, video lightbox, responsive lightbox, WP Lightbox, light box, lightbox youtube,
 Requires at least: 3.0.1
 Tested up to: 4.7.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Lightbox is the perfect tool for viewing photos.
 
@@ -14,11 +14,12 @@ Lightbox is the perfect tool for viewing photos.
 
 ### Wordpress Lightbox
 
-* [Wordpress Lightbox](http://huge-it.com/lightbox/)
-* [Lightbox Demo](http://huge-it.com/wordpress-lightbox-demo/#plugin_demo_wrapper)
-* [Lightbox FAQ](http://huge-it.com/wordpress-lightbox-faq/)
-* [Lightbox User Manual](http://huge-it.com/wordpress-lightbox-user-manual/)
-* [Lightbox Support](http://huge-it.com/contact-us/)
+* [Wordpress Lightbox](https://huge-it.com/lightbox/)
+* [Lightbox Demo](https://huge-it.com/wordpress-lightbox-demo/#plugin_demo_wrapper)
+* [Lightbox FAQ](https://huge-it.com/wordpress-lightbox-faq/)
+* [Lightbox User Manual](https://huge-it.com/wordpress-lightbox-user-manual/)
+* [Lightbox Support](https://huge-it.com/contact-us/)
+* [Lightbox Forum](https://huge-it.com/forums/forum/wordpress/wordpress-lightbox/)
 * [Lightbox Github Project](https://github.com/Huge-IT/lightbox)
 
 https://www.youtube.com/watch?v=pKcpqKy5I70
@@ -60,15 +61,15 @@ Besides YouTube you can make Vimeo link work with Lightbox. All your vimeo video
 
 > #### Demo
 >
->[Demo](http://huge-it.com/wordpress-lightbox-demo/#plugin_demo_wrapper)
+>[Demo](https://huge-it.com/wordpress-lightbox-demo/#plugin_demo_wrapper)
 
 > #### FAQ & User Manual
 >
->[FAQ](http://huge-it.com/wordpress-lightbox-faq/)
+>[FAQ](https://huge-it.com/wordpress-lightbox-faq/)
 >
->[User Manual](http://huge-it.com/wordpress-lightbox-user-manual/)
+>[User Manual](https://huge-it.com/wordpress-lightbox-user-manual/)
 
-If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com).
+If you think, that you found a bug in our [WordPress Lightbox](https://huge-it.com/lightbox) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com).
 
 == Installation ==
 
@@ -77,7 +78,7 @@ If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.co
 1. First download the ZIP file from Wordpress website
 2. Log in to your website administrator panel
 3. Go to the 'Add New' in the plugins dashboard, click “Upload Plugin”
-4. Upload [WordPress Lightbox](http://wordpress.org/plugins/lightbox) ZIP file by choosing it from your computer
+4. Upload [WordPress Lightbox](https://wordpress.org/plugins/lightbox) ZIP file by choosing it from your computer
 5. Click **Install** Now button
 6. Then click **Activate Plugin** button
 7. You can see the plugin installed on Wordpress left menu
@@ -100,7 +101,7 @@ If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.co
 
 Now you can set your lightbox options, images and use our lightbox.
 
-If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
+If you think, that you found a bug in our [WordPress Lightbox](https://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Screenshots ==
     
@@ -180,9 +181,13 @@ If you use multi site (have number of sites) when you install a plugin in main s
 *  Vimeo links can be displayed if you use pro version of the plugin. In pro version you need to wrap vimeo link with &lt;a href="link"&gt;text&lt;/a&gt;
 
 
-If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
+If you think, that you found a bug in our [WordPress Lightbox](https://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.0.2 =
+* 1) We have added a new View with title, description, social sharing and more options.
+* 2) We have added an option to set the position of the titles in the lightbox.
 
 = 2.0.1 =
 * 1) Fixed the UX/UI issues on Safari.
@@ -355,4 +360,4 @@ This section will allow to make changes of the Lightbox’s settings. Most of th
 *  Fix position. If “true” the popup does not change it’s position while scrolling up or down.
 *  Popup position. Set the position of popup.
 
-If you think, that you found a bug in our [WordPress Lightbox](http://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
+If you think, that you found a bug in our [WordPress Lightbox](https://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
