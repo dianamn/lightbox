@@ -183,6 +183,7 @@ function hugeit_lightbox_localize_scripts() {
 			wp_localize_script( 'hugeit-lightbox-js', 'hugeit_gen_resp_lightbox_obj', $lightbox_resp_default_options );
 		}
 		wp_localize_script( 'hugeit-custom-js', 'lightbox_type', get_option( 'hugeit_lightbox_type' ) );
+		wp_localize_script( 'hugeit-custom-js', 'ajaxUrl', admin_url( "admin-ajax.php" ) );
 	}
 }
 
@@ -197,4 +198,22 @@ function hugeit_lightbox_add_title_attachment_link( $link, $id = null ) {
 
 function hugeit_lightbox_plugins_url() {
 	return plugins_url( '', __FILE__ );
+}
+
+add_action('wp_ajax_lightbox_description', 'get_images_url');
+add_action('wp_ajax_nopriv_lightbox_description', 'get_images_url');
+
+function get_images_url(){
+	global $wpdb;
+	$image_urls = $_POST['urls'];
+	$all_urls = array();
+	foreach ($image_urls as $image_url) {
+		$query = $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s'", $image_url);
+		$id = $wpdb->get_var($query);
+		$attachment = get_post( $id );
+		$description = $attachment->post_content;
+		array_push($all_urls,$description);
+	}
+	echo json_encode($all_urls);
+	die();
 }

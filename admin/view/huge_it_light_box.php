@@ -67,6 +67,9 @@ require_once 'free_banner.php';
 					<option <?php selected( 'view4', $hugeit_resp_lightbox_values['hugeit_lightbox_lightboxView'] ); ?>
 						value="view4">4
 					</option>
+					<option <?php selected( 'view5', $hugeit_resp_lightbox_values['hugeit_lightbox_lightboxView'] ); ?>
+						value="view5">5
+					</option>
 				</select>
 			</div>
 			<div>
@@ -340,6 +343,21 @@ require_once 'free_banner.php';
 					<option <?php selected( 'effect_9', $hugeit_resp_default_lightbox_values['hugeit_lightbox_slideAnimationType'] ); ?>
 						value="effect_9">Effect 9
 					</option>
+				</select>
+			</div>
+			<div class="has-background">
+				<label for="hugeit_lightbox_title_pos">Title position
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p>Title position</p>
+						</div>
+					</div>
+				</label>
+				<select id="hugeit_lightbox_title_pos" name="">
+					<option value="left">Left</option>
+					<option value="center">Center</option>
+					<option value="right">Right</option>
 				</select>
 			</div>
 		</div>

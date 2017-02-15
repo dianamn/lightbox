@@ -111,8 +111,28 @@ jQuery(document).ready(function () {
         jQuery('.huge_it_catalog_container a').removeClass('responsove_lightbox');
         jQuery('section[id^="huge_it_catalog_content_"] a, div[id^="main-slider_"] a').removeClass('responsove_lightbox');
 
-        jQuery('.responsove_lightbox').lightbox();
     }
-
 });
-		
+
+jQuery(window).load(function(){
+    var urls = [];
+    jQuery("body a[href$='.jpg'] > img, body a[href$='.jpeg'] > img, body a[href$='.png'] > img, body a[href$='.gif'] > img").each(function(){
+        urls.push(jQuery(this).attr('src'));
+    });
+
+    var data = {
+        action: 'lightbox_description',
+        urls: urls
+    };
+
+    jQuery.post(ajaxUrl, data, function (response) {
+        if(response) {
+            response = JSON.parse(response);
+            for(var i = 0; i < jQuery("a.responsove_lightbox").length; i++){
+                jQuery("a.responsove_lightbox").eq(i).find('img').attr('data-description', response[i]);
+            }
+        }
+    });
+
+    jQuery('.responsove_lightbox').lightbox();
+});		

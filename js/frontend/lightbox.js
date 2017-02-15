@@ -30,7 +30,7 @@
         slideAnimationType: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_slideAnimationType,     /*  effect_1   effect_2    effect_3
          effect_4   effect_5    effect_6
          effect_7   effect_8    effect_9   */
-        lightboxView: hugeit_resp_lightbox_obj.hugeit_lightbox_lightboxView,              //  view1, view2, view3, view4
+        lightboxView: hugeit_resp_lightbox_obj.hugeit_lightbox_lightboxView,              //  view1, view2, view3, view4, view5
         speed: hugeit_resp_lightbox_obj.hugeit_lightbox_speed_new,
         width: hugeit_resp_lightbox_obj.hugeit_lightbox_width_new+'%',
         height: hugeit_resp_lightbox_obj.hugeit_lightbox_height_new+'%',
@@ -167,10 +167,10 @@
     Lightbox.prototype.structure = function () {
 
         var $object = this, list = '', controls = '',i,
-            subHtmlCont1 = '', subHtmlCont2 = '',
+            subHtmlCont1 = '', subHtmlCont2 = '', subHtmlCont3 = '',
             close1 = '', close2 = '', socialIcons = '',
             template, $arrows, $next, $prev,
-            $_next, $_prev, $close_bg, $download_bg;
+            $_next, $_prev, $close_bg, $download_bg, $download_bg_, $contInner;
 
         this.$body.append(
             this.objects.overlay = $('<div class="' + this.settings.classPrefix + 'overlay"></div>')
@@ -232,6 +232,24 @@
                 subHtmlCont2 = '<div class="' + this.settings.classPrefix + 'title"></div>';
                 close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
+            case 'view5':
+                $_next       = '<svg class="next_bg" width="22px" height="44px" fill="#999" x="0px" y="0px"' +
+                    'viewBox="0 0 40 70" style="enable-background:new 0 0 40 70;" xml:space="preserve">' +
+                    '<path id="XMLID_2_" class="st0" d="M3.3,1.5L1.8,2.9l31.8,31.8c0.5,0.5,0.5,0.9,0,1.4L1.8,67.9l1.5,1.4c0.3,0.5,0.9,0.5,1.4,0' +
+                    'l33.2-33.2c0.3-0.5,0.3-0.9,0-1.4L4.7,1.5C4.3,1,3.6,1,3.3,1.5L3.3,1.5z"/>' +
+                    '</svg>';
+                $_prev       = '<svg class="prev_bg" width="22px" height="44px" fill="#999" x="0px" y="0px"' +
+                    'viewBox="0 0 40 70" style="enable-background:new 0 0 40 70;" xml:space="preserve">' +
+                    '<path id="XMLID_2_" class="st0" d="M37.1,68.9l1.5-1.4L6.8,35.7c-0.3-0.5-0.3-0.9,0-1.4L38.6,2.5l-1.5-1.4c-0.3-0.5-0.9-0.5-1.2,0' +
+                    'L2.5,34.3c-0.3,0.5-0.3,0.9,0,1.4l33.4,33.2C36.2,69.4,36.8,69.4,37.1,68.9L37.1,68.9z"/>' +
+                    '</svg>';
+                $close_bg    = '<svg class="close_bg" width="16px" height="16px" fill="#999" viewBox="-341 343.4 15.6 15.6">' +
+                    '<path d="M-332.1,351.2l6.5-6.5c0.3-0.3,0.3-0.8,0-1.1s-0.8-0.3-1.1,0l-6.5,6.5l-6.5-6.5c-0.3-0.3-0.8-0.3-1.1,0s-0.3,0.8,0,1.1l6.5,6.5l-6.5,6.5c-0.3,0.3-0.3,0.8,0,1.1c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2l6.5-6.5l6.5,6.5c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2c0.3-0.3,0.3-0.8,0-1.1L-332.1,351.2z"/>' +
+                    '</svg>';
+                subHtmlCont3 = '<div class="' + this.settings.classPrefix + 'title"></div>' +
+                               '<div class="' + this.settings.classPrefix + 'description"></div>';
+                close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
+                break;
         }
 
         if (this.settings.arrows && this.$items.length > 1) {
@@ -241,13 +259,16 @@
                 '</div>';
         }
 
-        if (this.settings.socialSharing) {
+        if (this.settings.socialSharing && this.settings.lightboxView !== 'view5') {
             socialIcons = '<div class="' + this.settings.classPrefix + 'socialIcons"><button class="shareLook">share</button></div>';
         }
+
+        $contInner = (this.settings.lightboxView === 'view5') ? '<div class="contInner">' + subHtmlCont3 + '</div>' : '';
 
         template = '<div class="' + this.settings.classPrefix + 'cont ">' +
             '<div class="rwd-container rwd-' + this.settings.lightboxView + '">' +
             '<div class="cont-inner">' + list + '</div>' +
+            $contInner +
             '<div class="' + this.settings.classPrefix + 'toolbar group">' +
             close1 + subHtmlCont2 +
             '</div>' +
@@ -323,6 +344,9 @@
                     break;
                 case 'view4':
                     $('<a id="' + $object.settings.classPrefix + 'download" target="_blank" download class="' + this.settings.classPrefix + 'download ' + $object.settings.classPrefix + 'icon">' + $download_bg + '</a>').insertBefore($('.rwd-title'));;
+                    break;
+                case 'view5':
+                    $('.rwd-toolbar').append('<a id="' + $object.settings.classPrefix + 'download" target="_blank" download class="' + this.settings.classPrefix + 'download ' + $object.settings.classPrefix + 'icon">' + $download_bg_ + '</a>');
                     break;
             }
         }
@@ -433,6 +457,9 @@
                 case 'view4':
                     $('.' + this.settings.classPrefix + 'bar').append('<div class="barCont"></div>').append(this.objects.counter = $('<div id="' + this.settings.idPrefix + 'counter"></div>'));
                     break;
+                case 'view5':
+                    $('.contInner').append(this.objects.counter = $('<div id="' + this.settings.idPrefix + 'counter"></div>'));
+                    break;
             }
 
             this.objects.counter.append(
@@ -459,6 +486,15 @@
                 this.$cont.find('.' + this.settings.classPrefix + 'title').hide() :
                 this.$cont.find('.' + this.settings.classPrefix + 'title').show();
         }
+    };
+
+    Lightbox.prototype.setDescription = function (index) {
+        var $object = this, $description, $currentElement;
+
+        $currentElement = this.$items.eq(index);
+        $description = $currentElement.find('img').attr('data-description') || '';
+
+        this.$cont.find('.' + this.settings.classPrefix + 'description').html('<div class="rwd-description-text" title="'+$description+'">'+$description+'</div>');
     };
 
     Lightbox.prototype.preload = function (index) {
@@ -496,7 +532,11 @@
         shareButtons += $object.settings.share.yummlyButton ? '<li><a title="Yummly" id="rwd-share-yummly" target="_blank"></a></li>' : '';
         shareButtons += '</ul>';
 
-        $('.' + this.settings.classPrefix + 'socialIcons').append(shareButtons);
+        if(this.settings.lightboxView === 'view5'){
+            $('.contInner').append(shareButtons);
+        } else {
+            $('.' + this.settings.classPrefix + 'socialIcons').append(shareButtons);
+        }
 
         setTimeout(function () {
             $('#rwd-share-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + (encodeURIComponent(window.location.href)));
@@ -608,6 +648,12 @@
             $object.setTitle(index);
         }, time);
 
+        if($object.settings.lightboxView === 'view5'){
+            setTimeout(function () {
+                $object.setDescription(index);
+            }, time);
+        }
+        
         this.arrowDisable(index);
 
 
@@ -690,7 +736,7 @@
             $object.index++;
             $object.slide($object.index, fromSlide, false);
         } else {
-            if ($object.settings.loop) {
+            if ($object.settings.loop === 'true') {
                 $object.index = 0;
                 $object.slide($object.index, fromSlide, false);
             }
@@ -703,7 +749,7 @@
             $object.index--;
             $object.slide($object.index, fromSlide, false);
         } else {
-            if ($object.settings.loop) {
+            if ($object.settings.loop === 'true') {
                 $object.index = $object.$items.length - 1;
                 $object.slide($object.index, fromSlide, false);
             }
@@ -815,7 +861,7 @@
 
     Lightbox.prototype.arrowDisable = function (index) {
 
-        if (!this.settings.loop && this.settings.hideControlOnEnd) {
+        if (!this.settings.loop === 'true' && this.settings.hideControlOnEnd) {
             if ((index + 1) < this.$item.length) {
                 this.$cont.find('.' + this.settings.classPrefix + 'next').removeAttr('disabled').removeClass('disabled');
             } else {
@@ -861,7 +907,7 @@
             $object.destroy();
         });
 
-        if ($object.settings.overlayClose) {
+        if ($object.settings.overlayClose === 'true') {
 
             $object.$cont.on('mousedown.rwd-container', function (e) {
 
@@ -871,7 +917,7 @@
 
             $object.$cont.on('mouseup.rwd-container', function (e) {
 
-                if ($(e.target).is('.' + $object.settings.classPrefix + 'cont') || $(e.target).is('.' + $object.settings.classPrefix + 'item ') || $(e.target).is('.' + $object.settings.classPrefix + 'img-wrap') && mousedown) {
+                if ($(e.target).is('.contInner') || $(e.target).is('.' + $object.settings.classPrefix + 'cont') || $(e.target).is('.' + $object.settings.classPrefix + 'item ') || $(e.target).is('.' + $object.settings.classPrefix + 'img-wrap') && mousedown) {
                     if (!$object.$cont.hasClass($object.settings.classPrefix + 'dragEvent')) {
                         $object.destroy();
                     }
