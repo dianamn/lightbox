@@ -11,7 +11,7 @@
         this.$element = $(element);
         this.$body = $('body');
         this.objects = {};
-        this.videoModul = {};
+        this.lightboxModul = {};
         this.$item = '';
         this.$cont = '';
         this.$items = this.$body.find('a.responsove_lightbox');
@@ -61,6 +61,7 @@
         hideControlOnEnd: false,  //not for option
         watermark: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_watermark,
         socialSharing: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_socialSharing,
+        fullwidth: hugeit_resp_lightbox_obj.hugeit_lightbox_fullwidth_effect,
         share: {
             facebookButton: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_facebookButton,
             twitterButton: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_twitterButton,
@@ -125,7 +126,7 @@
 
         $object.structure();
 
-        $object.videoModul['video'] = new $.fn.lightbox.videoModul['video']($object.el);
+        $object.lightboxModul['video'] = new $.fn.lightbox.lightboxModul['video']($object.el);
 
         $object.slide(index, false, false);
 
@@ -637,8 +638,10 @@
             if (src) {
                 $('#' + $object.settings.classPrefix + 'download').attr('href', src);
                 $object.$cont.removeClass($object.settings.classPrefix + 'hide-download');
+                $object.$cont.removeClass($object.settings.classPrefix + 'hide-fullwidth');
             } else {
                 $object.$cont.addClass($object.settings.classPrefix + 'hide-download');
+                $object.$cont.addClass($object.settings.classPrefix + 'hide-fullwidth');
             }
         }
 
@@ -731,27 +734,62 @@
     };
 
     Lightbox.prototype.goToNextSlide = function (fromSlide) {
-        var $object = this;
+        var $object = this,
+            $cont = $('.rwd-cont'),
+            $imageObject, k;
         if (($object.index + 1) < $object.$item.length) {
             $object.index++;
             $object.slide($object.index, fromSlide, false);
         } else {
-            if ($object.settings.loop === 'true') {
+            if ($object.settings.loop) {
                 $object.index = 0;
                 $object.slide($object.index, fromSlide, false);
+            }
+        }
+
+        if ($object.settings.fullwidth && $cont.hasClass('rwd-fullwidth-on')) {
+            $imageObject = $cont.find('.rwd-image').eq($object.index);
+
+            k = $imageObject.width() / $imageObject.height();
+            if ($imageObject.width() > $imageObject.height() && k > 2) {
+                $imageObject.css({
+                    'min-width': '100%'
+                });
+            } else {
+                $imageObject.css({
+                    'min-height': '100%'
+                });
             }
         }
     };
 
     Lightbox.prototype.goToPrevSlide = function (fromSlide) {
-        var $object = this;
+        var $object = this,
+            $cont = $('.rwd-cont'),
+            $imageObject, k;
+
         if ($object.index > 0) {
             $object.index--;
             $object.slide($object.index, fromSlide, false);
         } else {
-            if ($object.settings.loop === 'true') {
+            if ($object.settings.loop) {
                 $object.index = $object.$items.length - 1;
                 $object.slide($object.index, fromSlide, false);
+            }
+        }
+
+        if ($object.settings.fullwidth && $cont.hasClass('rwd-fullwidth-on')) {
+            $imageObject = $cont.find('.rwd-image').eq($object.index);
+
+            k = $imageObject.width() / $imageObject.height();
+            if ($imageObject.width() > $imageObject.height() && k > 2) {
+                $imageObject.css({
+                    'min-width': '100%'
+                });
+            } else {
+                $imageObject.css({
+                    'min-height': '100%'
+                });
             }
         }
     };
@@ -975,41 +1013,46 @@
         });
     };
 
-    $.fn.lightbox.videoModul = {};
+    $.fn.lightbox.lightboxModul = {};
 
-    var Video = function (element) {
+    var Modul = function (element) {
 
         this.core = $(element).data('lightbox');
 
         this.$element = $(element);
-        this.core.videoSettings = $.extend({}, this.constructor.defaultsVideo, this.core.videoSettings);
+        this.core.modulSettings = $.extend({}, this.constructor.defaultsVideo, this.core.modulSettings);
 
         this.init();
+
+        if (this.core.modulSettings.fullwidth && this.core.effectsSupport()) {
+            this.initFullWidth();
+        }
 
         return this;
     };
 
-    Video.defaultsVideo = {
+    Modul.defaultsVideo = {
         idPrefix: 'rwd-',
         classPrefix: 'rwd-',
         attrPrefix: 'data-',
         videoMaxWidth: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_videoMaxWidth, //Assigned with line 34
         //videoMaxHeight: '100%',
         youtubePlayerParams: false,
-        vimeoPlayerParams: false
+        vimeoPlayerParams: false,
+        fullwidth: hugeit_resp_lightbox_obj.hugeit_lightbox_fullwidth_effect
     };
 
-    Video.prototype.init = function () {
+    Modul.prototype.init = function () {
         var $object = this;
 
         $object.core.$element.on('hasVideo.rwd-container.tm', function (event, index, src) {
-            $object.core.$item.eq(index).find('.' + $object.core.videoSettings.classPrefix + 'video').append($object.loadVideo(src, '' + $object.core.videoSettings.classPrefix + 'object', index));
+            $object.core.$item.eq(index).find('.' + $object.core.modulSettings.classPrefix + 'video').append($object.loadVideo(src, '' + $object.core.modulSettings.classPrefix + 'object', index));
         });
 
         $object.core.$element.on('onAferAppendSlide.rwd-container.tm', function (event, index) {
             $object.core.$item.eq(index).find('.' + $object.core.settings.classPrefix + 'video-cont').css({
-                'max-width': $object.core.videoSettings.videoMaxWidth + 'px'
-                //'max-height'  :  $object.core.videoSettings.videoMaxHeight
+                'max-width': $object.core.modulSettings.videoMaxWidth + 'px'
+                //'max-height'  :  $object.core.modulSettings.videoMaxHeight
             });
         });
 
@@ -1034,17 +1077,18 @@
 
             var isVideo = $object.core.isVideo(src, index) || {};
             if (isVideo.youtube || isVideo.vimeo) {
-                $object.core.$cont.addClass('' + $object.core.videoSettings.classPrefix + 'hide-download');
+                $object.core.$cont.addClass('' + $object.core.modulSettings.classPrefix + 'hide-download');
+                $object.core.$cont.addClass($object.core.modulSettings.classPrefix + 'hide-fullwidth');
             }
 
         });
 
         $object.core.$element.on('onAfterSlide.rwd-container.tm', function (event, prevIndex) {
-            $object.core.$item.eq(prevIndex).removeClass($object.core.videoSettings.classPrefix + 'video-playing');
+            $object.core.$item.eq(prevIndex).removeClass($object.core.modulSettings.classPrefix + 'video-playing');
         });
     };
 
-    Video.prototype.loadVideo = function (src, addClass, index) {
+    Modul.prototype.loadVideo = function (src, addClass, index) {
         var video = '',
             autoplay = 0,
             a = '',
@@ -1053,27 +1097,95 @@
         if (isVideo.youtube) {
 
             a = '?wmode=opaque&autoplay=' + autoplay + '&enablejsapi=1';
-            if (this.core.videoSettings.youtubePlayerParams) {
-                a = a + '&' + $.param(this.core.videoSettings.youtubePlayerParams);
+            if (this.core.modulSettings.youtubePlayerParams) {
+                a = a + '&' + $.param(this.core.modulSettings.youtubePlayerParams);
             }
 
-            video = '<iframe class="' + this.core.videoSettings.classPrefix + 'video-object ' + this.core.videoSettings.classPrefix + 'youtube ' + addClass + '" width="560" height="315" src="//www.youtube.com/embed/' + isVideo.youtube[1] + a + '" frameborder="0" allowfullscreen></iframe>';
+            video = '<iframe class="' + this.core.modulSettings.classPrefix + 'video-object ' + this.core.modulSettings.classPrefix + 'youtube ' + addClass + '" width="560" height="315" src="//www.youtube.com/embed/' + isVideo.youtube[1] + a + '" frameborder="0" allowfullscreen></iframe>';
 
         } else if (isVideo.vimeo) {
 
             a = '?autoplay=' + autoplay + '&api=1';
-            if (this.core.videoSettings.vimeoPlayerParams) {
-                a = a + '&' + $.param(this.core.videoSettings.vimeoPlayerParams);
+            if (this.core.modulSettings.vimeoPlayerParams) {
+                a = a + '&' + $.param(this.core.modulSettings.vimeoPlayerParams);
             }
 
-            video = '<iframe class="' + this.core.videoSettings.classPrefix + 'video-object ' + this.core.videoSettings.classPrefix + 'vimeo ' + addClass + '" width="560" height="315"  src="//player.vimeo.com/video/' + isVideo.vimeo[1] + a + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+            video = '<iframe class="' + this.core.modulSettings.classPrefix + 'video-object ' + this.core.modulSettings.classPrefix + 'vimeo ' + addClass + '" width="560" height="315"  src="//player.vimeo.com/video/' + isVideo.vimeo[1] + a + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 
         }
 
         return video;
     };
 
-    $.fn.lightbox.videoModul.video = Video;
+
+    Modul.prototype.initFullWidth = function () {
+        var $object = this,
+            $fullWidth, $fullWidthOn;
+
+        $fullWidth = '<svg id="rwd-fullwidth" width="20px" height="20px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="134 -133 357 357" style="enable-background:new 134 -133 357 357;">' +
+            '<g><g id="fullscreen"><path d="M165,96.5h-31V224h127.5v-31H165V96.5z M134-5.5h31V-82h96.5v-31H134V-5.5z M440,193h-76.5v31H491V96.5h-31V192z M363.5-103v21H460v76.5h31V-113H363.5z"></path>' +
+            '</g></g></svg>';
+
+        $fullWidthOn = '<svg id="rwd-fullwidth_on" width="20px" height="20px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="134 -133 357 357" style="enable-background:new 134 -133 357 357;">' +
+            '<g><g id="fullscreen-exit"><path d="M134, 127.5h 96.5V 224h 31V 96.5H 114V 147.5z M210.5 -36.5H 134v 31h 127.5V -133h -31V -36.5z M363.5, 224h 31v -96.5H 491v -31H 363.5V 224z M394.5 -56.5V -133h -31V -5.5H 491v -31H 395.5z"></path>' +
+            '</g></g></svg>';
+
+        if (this.core.modulSettings.fullwidth) {
+            var fullwidth = '<span class="rwd-fullwidth rwd-icon">' + $fullWidth + $fullWidthOn + '</span>';
+            this.core.$cont.find('.rwd-toolbar').append(fullwidth);
+        }
+
+        if (this.core.modulSettings.fullwidth) {
+            $('.rwd-fullwidth').on('click.rwd', function () {
+                !$('.rwd-cont').hasClass('rwd-fullwidth-on') ? $object.onFullWidth() : $object.offFullWidth();
+            });
+        }
+    };
+
+    Modul.prototype.onFullWidth = function () {
+
+        var $imageObject = this.core.$cont.find('.rwd-current .rwd-image');
+
+        $('#rwd-fullwidth').css({'display': 'none'});
+        $('#rwd-fullwidth_on').css({'display': 'inline-block'});
+
+        $('.rwd-cont').addClass('rwd-fullwidth-on');
+
+        $('.rwd-container').css({
+            width: '100%',
+            height: '100%'
+        });
+
+        var k = $imageObject.width() / $imageObject.height();
+        if ($imageObject.width() > $imageObject.height() && k > 2) {
+            $imageObject.css({
+                'min-width': '100%'
+            });
+        } else {
+            $imageObject.css({
+                'min-height': '100%'
+            });
+        }
+    };
+
+    Modul.prototype.offFullWidth = function () {
+        var $imageObject = this.core.$cont.find('.rwd-current .rwd-image');
+
+        $('#rwd-fullwidth').css({'display': 'inline-block'});
+        $('#rwd-fullwidth_on').css({'display': 'none'});
+
+        $('.rwd-cont').removeClass('rwd-fullwidth-on');
+        $('.rwd-container').css({
+            width: hugeit_resp_lightbox_obj.hugeit_lightbox_width_new + '%',
+            height: hugeit_resp_lightbox_obj.hugeit_lightbox_height_new + '%'
+        });
+        $imageObject.css({
+            'min-width': '',
+            'min-height': ''
+        });
+    };
+
+    $.fn.lightbox.lightboxModul.video = Modul;
 
     var WaterMark = function (element) {
         this.element = element;

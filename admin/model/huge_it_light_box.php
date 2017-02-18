@@ -82,7 +82,7 @@ class Hugeit_Lightbox_Model {
 			'hugeit_lightbox_watermark_position'     => '3',
 			'hugeit_lightbox_watermark_img_src'      => hugeit_lightbox_plugins_url() . '/images/No-image-found.jpg',
 			'hugeit_lightbox_watermark_transparency' => '100',
-			'hugeit_lightbox_watermark_image'        => 'false',
+			'hugeit_lightbox_watermark_image'        => 'false'
 		);
 
 		return $optons;
@@ -155,7 +155,7 @@ class Hugeit_Lightbox_Model {
 			'hugeit_lightbox_watermark_position_new'        => '9',
 			'hugeit_lightbox_watermark_opacity'             => '70',
 			'hugeit_lightbox_watermark_margin'              => '10',
-			'hugeit_lightbox_watermark_img_src_new'         => hugeit_lightbox_plugins_url() . '/images/No-image-found.jpg',
+			'hugeit_lightbox_watermark_img_src_new'         => hugeit_lightbox_plugins_url() . '/images/No-image-found.jpg'
 		);
 
 		return $options;
@@ -173,6 +173,7 @@ class Hugeit_Lightbox_Model {
 			'hugeit_lightbox_speed_new'                     => '600',
 			'hugeit_lightbox_overlayClose_new'              => 'true',
 			'hugeit_lightbox_loop_new'                      => 'true',
+			'hugeit_lightbox_fullwidth_effect'              => 'false'
 		);
 		return $options;
 	}
