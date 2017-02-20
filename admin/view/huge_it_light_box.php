@@ -116,6 +116,21 @@ require_once 'free_banner.php';
 					echo 'checked="checked"';
 				} ?> name="params[hugeit_lightbox_loop_new]" value="true"/>
 			</div>
+			<div>
+				<label for="hugeit_lightbox_fullwidth_effect"><?php _e('Full Width Effect','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Check to activate full width effect.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="hidden" value="false" name="params[hugeit_lightbox_fullwidth_effect]"/>
+				<input type="checkbox"
+					   id="hugeit_lightbox_fullwidth_effect" <?php if ($hugeit_resp_lightbox_values['hugeit_lightbox_fullwidth_effect'] == 'true') {
+					echo 'checked="checked"';
+				} ?> name="params[hugeit_lightbox_fullwidth_effect]" value="true"/>
+			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
 			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
@@ -568,7 +583,71 @@ require_once 'free_banner.php';
 				<input type="hidden" id="img_watermark_hidden_new" value="<?php echo $hugeit_resp_default_lightbox_values['hugeit_lightbox_watermark_img_src_new']; ?>">
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -400px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -365px;">
+			<h3><?php _e('Zoom Options','lightbox');?><img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
+														   class="hugeit_lightbox_pro_logo"></h3>
+			<div class="has-background">
+				<label for="hugeit_lightbox_zoom"><?php _e('Zoom Buttons','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Check to activate zoom buttons.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="hidden" value="false" name="params[hugeit_lightbox_zoom]"/>
+				<input type="checkbox"
+					   id="hugeit_lightbox_zoom" <?php if ($hugeit_resp_lightbox_values['hugeit_lightbox_zoom'] == 'true') {
+					echo 'checked="checked"';
+				} ?> name="params[hugeit_lightbox_zoom]" value="true"/>
+			</div>
+			<div class="has-background">
+				<label for="hugeit_lightbox_zoomtype"><?php _e('Zoom Type','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Zoom Type','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<select id="hugeit_lightbox_zoomtype" name="params[hugeit_lightbox_zoomtype]">
+					<option <?php selected('Full Lightbox',$hugeit_resp_lightbox_values['hugeit_lightbox_zoomtype']); ?> value="0"><?php _e('Full Lightbox','lightbox');?></option>
+				</select>
+			</div>
+			<div>
+				<label for="hugeit_lightbox_zoomsize"><?php _e('Zoom Size','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Zoom Size','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<div class="slider-container">
+					<input name="params[hugeit_lightbox_zoomsize]"
+						   id="hugeit_lightbox_zoomsize" data-slider-highlight="true"
+						   data-slider-values="0,10,20,30,40,50,60,70,80,90,100" type="text" data-slider="true"
+						   value="<?php echo $hugeit_resp_lightbox_values['hugeit_lightbox_zoomsize']; ?>"/>
+					<span><?php echo $hugeit_resp_lightbox_values['hugeit_lightbox_zoomsize']; ?>%</span>
+				</div>
+			</div>
+			<div class="has-background">
+				<label for="hugeit_lightbox_zoomlogo"><?php _e('Zoom Logo','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Zoom Logo','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<select id="hugeit_lightbox_zoomlogo" name="params[hugeit_lightbox_zoomlogo]">
+					<option <?php selected('0',$hugeit_resp_lightbox_values['hugeit_lightbox_zoomlogo']); ?> value="0"><?php _e('None','lightbox');?></option>
+					<option <?php selected('1',$hugeit_resp_lightbox_values['hugeit_lightbox_zoomlogo']); ?> value="1"><?php _e('Magnifying Glass','lightbox');?></option>
+					<option <?php selected('2',$hugeit_resp_lightbox_values['hugeit_lightbox_zoomlogo']); ?> value="2"><?php _e('Hand','lightbox');?></option>
+				</select>
+			</div>
+		</div>
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -110px;">
 			<h3>Social Share Buttons<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 										 class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">

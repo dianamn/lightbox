@@ -33,3 +33,6 @@ if (!get_option('hugeit_lightbox_loop_new')) {
     }
 }
 
+if( !get_option( 'hugeit_lightbox_fullwidth_effect' ) ) {
+    update_option('hugeit_lightbox_fullwidth_effect', 'false');
+}
