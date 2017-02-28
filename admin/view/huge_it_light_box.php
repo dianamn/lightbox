@@ -131,6 +131,21 @@ require_once 'free_banner.php';
 					echo 'checked="checked"';
 				} ?> name="params[hugeit_lightbox_fullwidth_effect]" value="true"/>
 			</div>
+			<div class="has-background">
+				<label for="hugeit_lightbox_thumbs"><?php _e('Thumbnail','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Check to activate thumbnails','lightbox');?>.</p>
+						</div>
+					</div>
+				</label>
+				<input type="hidden" value="false" name="params[hugeit_lightbox_thumbs]"/>
+				<input type="checkbox"
+					   id="hugeit_lightbox_thumbs" <?php if ($hugeit_resp_lightbox_values['hugeit_lightbox_thumbs'] == 'true') {
+					echo 'checked="checked"';
+				} ?> name="params[hugeit_lightbox_thumbs]" value="true"/>
+			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
 			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
@@ -762,6 +777,94 @@ require_once 'free_banner.php';
 				</div>
 			</div>
 		</div>
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: 0;">
+			<h3><?php _e('Thumbnails','lightbox');?><img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
+														 class="hugeit_lightbox_pro_logo"></h3>
+			<div>
+				<label for="hugeit_lightbox_thumbs_width"><?php _e('Thumbnails Width','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Set the size of the thumbnails width in pixels.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="number" name="params[hugeit_lightbox_thumbs_width]" id="hugeit_lightbox_thumbs_width"
+					   value="100" class="text">
+				<span>px</span>
+			</div>
+			<div class="has-background">
+				<label for="hugeit_lightbox_thumbs_height"><?php _e('Thumbnails height','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Set the size of the thumbnails height in pixels (Max height - 200px).','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="number" name="params[hugeit_lightbox_thumbs_height]" id="hugeit_lightbox_thumbs_height"
+					   value="100" max="200" class="text">
+				<span>px</span>
+			</div>
+			<div>
+				<label for="hugeit_lightbox_thumbs_margin"><?php _e('Thumbnails Margin','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Set the size of the thumbnails margin in pixels.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="number" name="params[hugeit_lightbox_thumbs_margin]" id="hugeit_lightbox_thumbs_margin"
+					   value="5" class="text">
+				<span>px</span>
+			</div>
+			<div class="has-background">
+				<label for="hugeit_lightbox_thumbs_position"><?php _e('Thumbnails position','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Thumbnails position (Bottom, Top, Left, Right)','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<select id="hugeit_lightbox_thumbs_position" name="params[hugeit_lightbox_thumbs_position]">
+					<option selected value="0"><?php _e('Bottom','lightbox');?></option>
+				</select>
+			</div>
+			<div>
+				<label for="hugeit_lightbox_thumbs_overlay_color"><?php _e('Thumbnails Overlay Color','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Passive Thumbnails Overlay Color.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input name="params[hugeit_lightbox_thumbs_overlay_color]"
+					   type="text" class="color" id="hugeit_lightbox_thumbs_overlay_color"
+					   value="#000"
+					   size="10"/>
+			</div>
+			<div class="has-background">
+				<label for="hugeit_lightbox_thumbs_overlay_opacity"><?php _e('Thumbnails Overlay Opacity','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Passive Thumbnails Overlay Opacity','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<div class="slider-container">
+					<input name="params[hugeit_lightbox_thumbs_overlay_opacity]"
+						   id="hugeit_lightbox_thumbs_overlay_opacity" data-slider-highlight="true"
+						   data-slider-values="0,10,20,30,40,50,60,70,80,90,100" type="text" data-slider="true"
+						   value="50"/>
+					<span>50%</span>
+				</div>
+			</div>
+		</div>
+
 	</div>
 	<div id="lightbox-options-list"
 	     class="unique-type-options-wrapper <?php if ( $hugeit_lightbox_values['hugeit_lightbox_type'] == 'old_type' ) {
