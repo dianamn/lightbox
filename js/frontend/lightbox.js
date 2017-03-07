@@ -47,6 +47,8 @@
         arrows: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_arrows,
         mouseWheel: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_mouseWheel,
         download: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_download,
+        showTitle: hugeit_resp_lightbox_obj.hugeit_lightbox_showTitle === 'true',
+        showDesc: hugeit_resp_lightbox_obj.hugeit_lightbox_showDesc === 'true',
         showCounter: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_showCounter,
         defaultTitle: '',  //some text
         preload: 10,  //not for option
@@ -64,7 +66,7 @@
         watermark: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_watermark,
         socialSharing: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_socialSharing,
         titlePos: hugeit_resp_lightbox_obj.hugeit_lightbox_title_pos,
-        fullwidth: hugeit_resp_lightbox_obj.hugeit_lightbox_fullwidth_effect,
+        fullwidth: hugeit_resp_lightbox_obj.hugeit_lightbox_fullwidth_effect === 'true',
         zoomLogo: hugeit_resp_lightbox_obj.hugeit_lightbox_zoomlogo,
         wURL: hugeit_resp_lightbox_obj.hugeit_lightbox_watermark_link,
         watermarkURL: hugeit_resp_lightbox_obj.hugeit_lightbox_watermark_url,
@@ -220,7 +222,9 @@
                 $_prev = '<svg class="prev_bg" width="22px" height="22px" fill="#999" viewBox="-333 335.5 31.5 31.5" >' +
                     '<path d="M-322.7,340.5c0.4-0.4,1.1-0.4,1.6,0c0.4,0.4,0.4,1.1,0,1.6l-8,8h26.6c0.6,0,1.1,0.5,1.1,1.1c0,0.6-0.5,1.1-1.1,1.1h-26.6l8,8c0.4,0.4,0.4,1.2,0,1.6c-0.4,0.4-1.1,0.4-1.6,0l-10-10c-0.4-0.4-0.4-1.1,0-1.6L-322.7,340.5z"/>' +
                     '</svg>';
-                subHtmlCont1 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                if(this.settings.showTitle){
+                    subHtmlCont1 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                }
                 close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
             case 'view2':
@@ -230,7 +234,9 @@
                 $_prev = '<svg class="prev_bg" width="22px" height="22px" fill="#999" viewBox="-123 125.2 451.8 451.8" >' +
                     '<g><path d="M-25.9,351.1c0-8.1,3.1-16.2,9.3-22.4l194.3-194.3c12.4-12.4,32.4-12.4,44.8,0c12.4,12.4,12.4,32.4,0,44.7L50.5,351.1L222.4,523c12.4,12.4,12.4,32.4,0,44.7c-12.4,12.4-32.4,12.4-44.7,0L-16.6,373.4C-22.8,367.3-25.9,359.2-25.9,351.1z"/></g>' +
                     '</svg>';
-                subHtmlCont2 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                if(this.settings.showTitle){
+                    subHtmlCont2 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                }
                 close2 = '<div class="barCont"></div><span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
             case 'view3':
@@ -242,7 +248,9 @@
                     '<g><g><path d="M141.2,596c135.2,0,245.2-110,245.2-245.2s-110-245.2-245.2-245.2S-104,215.6-104,350.8S6,596,141.2,596z M141.2,130.1c121.7,0,220.7,99,220.7,220.7s-99,220.7-220.7,220.7s-220.7-99-220.7-220.7S19.5,130.1,141.2,130.1z"/>' +
                     '<path d="M94.9,428.4c2.4,2.4,5.5,3.6,8.7,3.6s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-48-48h183.4c6.8,0,12.3-5.5,12.3-12.3c0-6.8-5.5-12.3-12.3-12.3H64.3l48-48c4.8-4.8,4.8-12.5,0-17.3c-4.8-4.8-12.5-4.8-17.3,0l-68.9,68.9c-4.8,4.8-4.8,12.5,0,17.3L94.9,428.4z"/></g></g>' +
                     '</svg>';
-                subHtmlCont1 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                if(this.settings.showTitle){
+                    subHtmlCont1 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                }
                 close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
             case 'view4':
@@ -255,7 +263,9 @@
                 $close_bg = '<svg class="close_bg" width="16px" height="16px" fill="#999" viewBox="-341 343.4 15.6 15.6">' +
                     '<path d="M-332.1,351.2l6.5-6.5c0.3-0.3,0.3-0.8,0-1.1s-0.8-0.3-1.1,0l-6.5,6.5l-6.5-6.5c-0.3-0.3-0.8-0.3-1.1,0s-0.3,0.8,0,1.1l6.5,6.5l-6.5,6.5c-0.3,0.3-0.3,0.8,0,1.1c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2l6.5-6.5l6.5,6.5c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2c0.3-0.3,0.3-0.8,0-1.1L-332.1,351.2z"/>' +
                     '</svg>';
-                subHtmlCont2 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                if(this.settings.showTitle){
+                    subHtmlCont2 = '<div class="' + this.settings.classPrefix + 'title"></div>';
+                }
                 close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
             case 'view5':
@@ -272,8 +282,12 @@
                 $close_bg = '<svg class="close_bg" width="16px" height="16px" fill="#999" viewBox="-341 343.4 15.6 15.6">' +
                     '<path d="M-332.1,351.2l6.5-6.5c0.3-0.3,0.3-0.8,0-1.1s-0.8-0.3-1.1,0l-6.5,6.5l-6.5-6.5c-0.3-0.3-0.8-0.3-1.1,0s-0.3,0.8,0,1.1l6.5,6.5l-6.5,6.5c-0.3,0.3-0.3,0.8,0,1.1c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2l6.5-6.5l6.5,6.5c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2c0.3-0.3,0.3-0.8,0-1.1L-332.1,351.2z"/>' +
                     '</svg>';
-                subHtmlCont3 = '<div class="' + this.settings.classPrefix + 'title"></div>' +
-                    '<div class="' + this.settings.classPrefix + 'description"></div>';
+                if(this.settings.showTitle){
+                    subHtmlCont3 += '<div class="' + this.settings.classPrefix + 'title"></div>';
+                }
+                if(this.settings.showDesc){
+                    subHtmlCont3 += '<div class="' + this.settings.classPrefix + 'description"></div>';
+                }
                 close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
         }
@@ -290,11 +304,8 @@
         }
 
         $contInner = (this.settings.lightboxView === 'view5') ? '<div class="contInner">' + subHtmlCont3 + '</div>' : '';
-
-        var $zoomDiv = hugeit_resp_lightbox_obj.hugeit_lightbox_zoom ? '<div class="rwd-zoomDiv"></div>' : '';
-
+        
         template = '<div class="' + this.settings.classPrefix + 'cont ">' +
-            $zoomDiv +
             '<div class="rwd-container rwd-' + this.settings.lightboxView + '">' +
             '<div class="cont-inner">' + list + '</div>' +
             $contInner +
@@ -464,15 +475,7 @@
                 $color = 'rgba(0,0,0,.9)';
                 break;
         }
-
-
-        $('.rwd-zoomDiv').css({
-            'width': $object.settings.width,
-            'top': $zoomTop + 'px',
-            'background-color': $color
-        });
-
-        setTimeout(function () {
+            setTimeout(function () {
             $('.rwd-container').bind('contextmenu', function () {
                 return false;
             });
@@ -1202,7 +1205,7 @@
         classPrefix: 'rwd-',
         attrPrefix: 'data-',
         videoMaxWidth: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_videoMaxWidth,
-        fullwidth: hugeit_resp_lightbox_obj.hugeit_lightbox_fullwidth_effect,
+        fullwidth: hugeit_resp_lightbox_obj.hugeit_lightbox_fullwidth_effect === 'true',
         zoom: hugeit_resp_lightbox_obj.hugeit_lightbox_zoom,
         scale: +hugeit_resp_lightbox_obj.hugeit_lightbox_zoomsize / 10,
         thumbnail: hugeit_resp_lightbox_obj.hugeit_lightbox_thumbs,
@@ -1347,12 +1350,6 @@
                 'min-height': '100%'
             });
         }
-        if(hugeit_resp_lightbox_obj.hugeit_lightbox_zoom){
-            $('.rwd-zoomDiv').css({
-                top: '45px',
-                width: '100%'
-            });
-        }
     };
 
     Modul.prototype.offFullWidth = function () {
@@ -1370,12 +1367,6 @@
             'min-width': '',
             'min-height': ''
         });
-        if(hugeit_resp_lightbox_obj.hugeit_lightbox_zoom){
-            $('.rwd-zoomDiv').css({
-                top: ((document.documentElement.clientHeight - $('.rwd-container').height()) / 2) + 'px',
-                width: this.dataL.settings.width
-            });
-        }
     };
 
     Modul.prototype.initZoom = function () {
@@ -1553,15 +1544,13 @@
 
     Modul.prototype.zoomDrag = function () {
 
-        var $object = this;
-        var startCoords = {};
-        var endCoords = {};
-        var isDraging = false;
-        var isMoved = false;
-
-        var abscissa = false;
-
-        var ordinate = false;
+        var $object = this,
+            startCoords = {},
+            endCoords = {},
+            isDraging = false,
+            isMoved = false,
+            abscissa = false,
+            ordinate = false;
 
         $object.dataL.$item.on('mousedown.rwd-container.zoom', function (e) {
 
@@ -1636,14 +1625,11 @@
     };
 
     Modul.prototype.zoomSwipe = function () {
-        var $object = this;
-        var startCoords = {};
-        var endCoords = {};
-        var isMoved = false;
-
-        var abscissa = false;
-
-        var ordinate = false;
+        var $object = this,
+            startCoords = {},
+            endCoords = {},
+            isMoved = false,
+            abscissa = false,                   ordinate = false;
 
         $object.dataL.$item.on('touchstart.rwd-container', function (e) {
 
@@ -1747,7 +1733,7 @@
             bottom: -$object.dataL.modulSettings.thumbsHeight + 'px'
         });
 
-        if (this.dataL.modulSettings.showByDefault) {
+        if (this.dataL.modulSettings.showByDefault && this.dataL.$items.length > 1) {
             var $cont_ = $('.cont-inner'),
                 $thumb_ = $('.rwd-thumb-cont'),
                 $toolbar_ = $('.rwd-toolbar');

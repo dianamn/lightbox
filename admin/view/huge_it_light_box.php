@@ -146,6 +146,36 @@ require_once 'free_banner.php';
 					echo 'checked="checked"';
 				} ?> name="params[hugeit_lightbox_thumbs]" value="true"/>
 			</div>
+			<div>
+				<label for="hugeit_lightbox_showTitle"><?php _e('Show Title','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Check to display title.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="hidden" value="false" name="params[hugeit_lightbox_showTitle]"/>
+				<input type="checkbox"
+					   id="hugeit_lightbox_showTitle" <?php if ($hugeit_resp_lightbox_values['hugeit_lightbox_showTitle'] == 'true') {
+					echo 'checked="checked"';
+				} ?> name="params[hugeit_lightbox_showTitle]" value="true"/>
+			</div>
+			<div>
+				<label for="hugeit_lightbox_showDesc"><?php _e('Show Description','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Check to display description.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="hidden" value="false" name="params[hugeit_lightbox_showDesc]"/>
+				<input type="checkbox"
+					   id="hugeit_lightbox_showDesc" <?php if ($hugeit_resp_lightbox_values['hugeit_lightbox_showDesc'] == 'true') {
+					echo 'checked="checked"';
+				} ?> name="params[hugeit_lightbox_showDesc]" value="true"/>
+			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
 			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
@@ -242,7 +272,7 @@ require_once 'free_banner.php';
 				<span>ms</span>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style=" margin-top: -150px;">
+		<div class="options-block hugeit-lightbox-pro-option" style=" margin-top: -30px;">
 			<h3>Advanced Options<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 									 class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -598,7 +628,7 @@ require_once 'free_banner.php';
 				<input type="hidden" id="img_watermark_hidden_new" value="<?php echo $hugeit_resp_default_lightbox_values['hugeit_lightbox_watermark_img_src_new']; ?>">
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -365px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -235px;">
 			<h3><?php _e('Zoom Options','lightbox');?><img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 														   class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -662,7 +692,7 @@ require_once 'free_banner.php';
 				</select>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -110px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: 0;">
 			<h3>Social Share Buttons<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 										 class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -777,7 +807,7 @@ require_once 'free_banner.php';
 				</div>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: 0;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -270px;">
 			<h3><?php _e('Thumbnails','lightbox');?><img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 														 class="hugeit_lightbox_pro_logo"></h3>
 			<div>
@@ -969,21 +999,6 @@ require_once 'free_banner.php';
 				<input type="number" name="params[hugeit_lightbox_fadeout]" id="hugeit_lightbox_fadeout"
 				       value="<?php echo esc_attr( $hugeit_lightbox_values['hugeit_lightbox_fadeout'] ); ?>" class="text">
 				<span>ms</span>
-			</div>
-			<div class="has-background">
-				<label for="hugeit_lightbox_title">Show the title
-					<div class="help">?
-						<div class="help-block">
-							<span class="pnt"></span>
-							<p>Choose whether to display the content title.</p>
-						</div>
-					</div>
-				</label>
-				<input type="hidden" value="false" name="params[hugeit_lightbox_title]"/>
-				<input type="checkbox"
-				       id="hugeit_lightbox_title" <?php if ( $hugeit_lightbox_values['hugeit_lightbox_title'] == 'true' ) {
-					echo 'checked="checked"';
-				} ?> name="params[hugeit_lightbox_title]" value="true"/>
 			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">

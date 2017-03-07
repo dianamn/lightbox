@@ -40,3 +40,11 @@ if( !get_option( 'hugeit_lightbox_fullwidth_effect' ) ) {
 if( !get_option( 'hugeit_lightbox_thumbs' ) ) {
     update_option('hugeit_lightbox_thumbs', 'false');
 }
+
+if( !get_option( 'hugeit_lightbox_showTitle' ) ) {
+    update_option('hugeit_lightbox_showTitle', 'true');
+}
+
+if( !get_option( 'hugeit_lightbox_showDesc' ) ) {
+    update_option('hugeit_lightbox_showDesc', 'false');
+}
