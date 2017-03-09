@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: https://huge-it.com/lightbox/
 Tags: lightbox, popup, popup images, lightbox popup, popup box, wordpress lightbox, wordpress popup, video lightbox, responsive lightbox, WP Lightbox, light box, lightbox youtube,
 Requires at least: 3.0.1
-Tested up to: 4.7.2
-Stable tag: 2.0.4
+Tested up to: 4.7.3
+Stable tag: 2.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -184,6 +184,12 @@ If you use multi site (have number of sites) when you install a plugin in main s
 If you think, that you found a bug in our [WordPress Lightbox](https://huge-it.com/lightbox/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.0.5 =
+* 1) We have added an option to show or hide titles and/or descriptions.
+* 2) We have added an option to add Image URL, so it leads to websites when you click on image (Pro)
+* 3) Post/Page-enable/disable(Post/Page-enable/disable autosave) (Pro)
+* 4) We have added an option allowing users to open images in a new tab.
 
 = 2.0.4 =
 * 1) We have added thumbnails functionality to the lightbox.
