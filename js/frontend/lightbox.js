@@ -49,6 +49,7 @@
         download: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_download,
         showTitle: hugeit_resp_lightbox_obj.hugeit_lightbox_showTitle === 'true',
         showDesc: hugeit_resp_lightbox_obj.hugeit_lightbox_showDesc === 'true',
+        showBorder: hugeit_resp_lightbox_obj.hugeit_lightbox_showBorder === 'true',
         showCounter: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_showCounter,
         defaultTitle: '',  //some text
         preload: 10,  //not for option
@@ -318,7 +319,6 @@
             '</div>' +
             '</div>';
 
-
         if ($object.settings.socialSharing) {
             setTimeout(function () {
                 $object.socialShare();
@@ -481,6 +481,11 @@
             });
         }, 50);
 
+        if(this.settings.showBorder){
+            $('.rwd-container').css({
+                border: '2px solid #999'
+            });
+        }
     };
 
     Lightbox.prototype.calculateDimensions = function () {
@@ -1733,7 +1738,7 @@
             bottom: -$object.dataL.modulSettings.thumbsHeight + 'px'
         });
 
-        if (this.dataL.modulSettings.showByDefault && this.dataL.$items.length > 1) {
+        if (this.dataL.modulSettings.showByDefault) {
             var $cont_ = $('.cont-inner'),
                 $thumb_ = $('.rwd-thumb-cont'),
                 $toolbar_ = $('.rwd-toolbar');

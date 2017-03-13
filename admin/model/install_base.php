@@ -48,3 +48,7 @@ if( !get_option( 'hugeit_lightbox_showTitle' ) ) {
 if( !get_option( 'hugeit_lightbox_showDesc' ) ) {
     update_option('hugeit_lightbox_showDesc', 'false');
 }
+
+if( !get_option( 'hugeit_lightbox_showBorder' ) ) {
+    update_option('hugeit_lightbox_showBorder', 'false');
+}
