@@ -706,6 +706,23 @@
             }
         }
 
+        if(hugeit_resp_lightbox_obj.hugeit_lightbox_imageframe !== 'frame_0'){
+            $('.rwd-image').css({
+                borderColor: '#f4be52',
+                borderStyle: 'inset',
+                borderWidth: '60px'
+            });
+            if(hugeit_resp_lightbox_obj.hugeit_lightbox_imageframe !== 'frame_8'){
+                $('.rwd-image').css({
+                    borderImage: 'url("' + hugeit_resp_lightbox_plugins_url + hugeit_resp_lightbox_obj.hugeit_lightbox_imageframe + '.png") 90 95 95 90 stretch stretch'
+                });
+            } else {
+                $('.rwd-image').css({
+                    borderImage: 'url("' + hugeit_resp_lightbox_plugins_url + hugeit_resp_lightbox_obj.hugeit_lightbox_imageframe + '.png") 90 123 85 129 stretch stretch'
+                });
+            }
+        }
+
     };
 
     Lightbox.prototype.slide = function (index, fromSlide, fromThumb) {

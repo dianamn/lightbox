@@ -52,3 +52,7 @@ if( !get_option( 'hugeit_lightbox_showDesc' ) ) {
 if( !get_option( 'hugeit_lightbox_showBorder' ) ) {
     update_option('hugeit_lightbox_showBorder', 'false');
 }
+
+if( !get_option( 'hugeit_lightbox_imageframe' ) ) {
+    update_option('hugeit_lightbox_imageframe', 'frame_0');
+}
