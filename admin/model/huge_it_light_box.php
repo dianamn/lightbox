@@ -177,7 +177,8 @@ class Hugeit_Lightbox_Model {
 			'hugeit_lightbox_thumbs'     					=> 'false',
 			'hugeit_lightbox_showTitle'                		=> 'true',
 			'hugeit_lightbox_showDesc'               		=> 'false',
-			'hugeit_lightbox_showBorder'               		=> 'false'
+			'hugeit_lightbox_showBorder'               		=> 'false',
+			'hugeit_lightbox_imageframe'                    => 'frame_0'
 		);
 		return $options;
 	}
