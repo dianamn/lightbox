@@ -201,10 +201,10 @@ require_once 'free_banner.php';
 					</div>
 				</label>
 				<select id="hugeit_lightbox_imageframe" name="params[hugeit_lightbox_imageframe]">
-					<option <?php selected('frame_0',$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_0">None</option>
-					<option <?php selected('frame_1',$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_1">Frame 1</option>
-					<option <?php selected('frame_2',$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_2">Frame 2</option>
-					<option <?php selected('frame_8',$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_8">Frame 3</option>
+					<option <?php selected('frame_0',(string)$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_0">None</option>
+					<option <?php selected('frame_1',(string)$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_1">Frame 1</option>
+					<option <?php selected('frame_2',(string)$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_2">Frame 2</option>
+					<option <?php selected('frame_8',(string)$hugeit_resp_lightbox_values['hugeit_lightbox_imageframe']); ?> value="frame_8">Frame 3</option>
 				</select>
 				<div id="view-image_frame">
 					<span class="view-style-eye"><?php _e( 'Preview', 'hugeit_lightbox' ); ?></span>
