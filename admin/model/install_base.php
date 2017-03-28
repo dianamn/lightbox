@@ -56,3 +56,7 @@ if( !get_option( 'hugeit_lightbox_showBorder' ) ) {
 if( !get_option( 'hugeit_lightbox_imageframe' ) ) {
     update_option('hugeit_lightbox_imageframe', 'frame_0');
 }
+
+if( !get_option( 'hugeit_lightbox_fullscreen_effect' ) ) {
+    update_option('hugeit_lightbox_fullscreen_effect', 'false');
+}
