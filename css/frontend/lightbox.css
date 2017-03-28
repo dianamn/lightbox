@@ -2,7 +2,7 @@
 .rwd-arrows .rwd-next > .next_bg:hover,.rwd-arrows .rwd-prev > .prev_bg:hover,
 .rwd-autoplay-button > .play_bg:hover, .rwd-autoplay-button > .pause_bg:hover,
 .rwd-bar .rwd-close > .close_bg:hover,.rwd-toolbar .rwd-close > .close_bg:hover,
-.rwd-bar .rwd-download > .download_bg:hover,.rwd-toolbar .rwd-download > .download_bg:hover, #rwd-fullwidth:hover, #rwd-fullwidth_on:hover,
+.rwd-bar .rwd-download > .download_bg:hover,.rwd-toolbar .rwd-download > .download_bg:hover, #rwd-fullwidth:hover, #rwd-fullwidth_on:hover, #rwd-fullscreen-on:hover, #rwd-fullscreen-off:hover,
 #zoom_in:hover, #zoom_out:hover {fill:#fff}
 .rwd-bar .rwd-download > .download_bg:hover,.rwd-toolbar .rwd-download > .download_bg:hover{stroke: #fff}
 .rwd-container.rwd-view1 {background: black;}
@@ -11,7 +11,7 @@
 .rwd-view3 .rwd-autoplay-button > .play_bg:hover,.rwd-view3 .rwd-autoplay-button > .pause_bg:hover,
 .rwd-view3 .rwd-bar .rwd-close > .close_bg:hover,.rwd-view3 .rwd-toolbar .rwd-close > .close_bg:hover,
 .rwd-view3 .rwd-bar .rwd-download > .download_bg:hover,.rwd-view3 .rwd-toolbar .rwd-download > .download_bg:hover,.rwd-view3 #rwd-fullwidth:hover,.rwd-view3 #rwd-fullwidth_on:hover,
-.rwd-view3 #zoom_in:hover,.rwd-view3 #zoom_out:hover {fill:#000}
+.rwd-view3 #rwd-fullscreen-on:hover,.rwd-view3 #rwd-fullscreen-off:hover,.rwd-view3 #zoom_in:hover,.rwd-view3 #zoom_out:hover {fill:#000}
 .rwd-view3 .rwd-bar .rwd-download > .download_bg:hover,.rwd-view3 .rwd-toolbar .rwd-download > .download_bg:hover {stroke: #000}
 .rwd-title,.rwd-toolbar{background-color:rgba(0,0,0,.9)}
 .rwd-description {font-size:15px;background:none; position:relative;top:90px;left:0;padding:10px 40px;right:0;height:auto;min-height:45px;max-height:calc(100% - 150px)}
@@ -27,6 +27,11 @@
 .rwd-bar #rwd-zoom-in{left:150px}
 .rwd-bar #rwd-zoom-out{left:200px}
 .rwd-bar .rwd-fullwidth{left:250px}
+.rwd-bar .rwd-fullscreen{left:300px}
+.rwd-fullscreen-on #rwd-fullscreen-on{display:none;}
+.rwd-fullscreen-on #rwd-fullscreen-off{display:inline-block;}
+#rwd-fullscreen-on{display:inline-block;}
+#rwd-fullscreen-off{display:none;}
 .rwd-bar .rwd-icon:hover,.rwd-toolbar .rwd-icon:hover{color:#FFF}
 .rwd-bar .rwd-icon0:hover,.rwd-toolbar .rwd-icon0:hover,.rwd-arrows .rwd-icon0:hover{color:#000}
 .barCont{background:rgba(0,0,0,.9);width:100%;height:45px;position:absolute;bottom:0;z-index:1071}
@@ -146,7 +151,7 @@ a#rwd-share-yummly:hover{background:url('../../images/share(1).png');background-
 .rwd-cont.rwd-hide-download #rwd-download,.rwd-cont.rwd-hide-actual-size #rwd-actual-size,.rwd-cont.rwd-hide-fullwidth .rwd-fullwidth,.rwd-cont.rwd-hide-zoom-in #rwd-zoom-in,.rwd-cont.rwd-hide-zoom-out #rwd-zoom-out{display:none}
 .rwd-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999997;background:rgba(0,0,0,.7);opacity:0;-webkit-transition:opacity .15s ease 0s;-o-transition:opacity .15s ease 0s;transition:opacity .15s ease 0s}
 .rwd-overlay.in{opacity:1}
-#rwd-fullwidth_on{display: none}
+#rwd-fullwidth_on, #rwd-fullscreen-off{display: none}
 #rwd-zoom-out {opacity: 0.5;pointer-events: none;}
 .rwd-zoomed #rwd-zoom-out {opacity: 1;pointer-events: auto;}
 .rwd-zoomGlass .rwd-image:hover {cursor:-webkit-zoom-in;cursor:-moz-zoom-in;cursor:-ms-zoom-in;cursor:zoom-in}

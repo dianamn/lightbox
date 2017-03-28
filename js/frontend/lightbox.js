@@ -1137,7 +1137,6 @@
             });
 
         }
-
     };
 
     Lightbox.prototype.destroy = function (d) {
@@ -1176,6 +1175,8 @@
         }, $object.settings.overlayDuration + 50);
 
         window.scrollTo(0, $object.$_y_);
+
+        $.fn.lightbox.lightboxModul['modul'].prototype.destroy();
     };
 
     $.fn.lightbox = function (options) {
@@ -1219,6 +1220,10 @@
             this.initThumbs();
         }
 
+        if(this.dataL.modulSettings.fullscreen){
+            this.initFullscreen();
+        }
+
         return this;
     };
 
@@ -1238,7 +1243,8 @@
         toogleThumb: false,
         thumbPosition: '0',
         thumbsOverlayColor: 'black',
-        thumbsOverlayOpacity: 10
+        thumbsOverlayOpacity: 10,
+        fullscreen: hugeit_resp_lightbox_obj.hugeit_lightbox_fullscreen_effect === 'true'
     };
 
     Modul.prototype.init = function () {
@@ -1312,17 +1318,97 @@
         return video;
     };
 
+    Modul.prototype.initFullscreen = function() {
+        var fullScreen = '';
+        if (this.dataL.modulSettings.fullscreen) {
+            if (!document.fullscreenEnabled && !document.webkitFullscreenEnabled && !document.mozFullScreenEnabled && !document.msFullscreenEnabled) {
+                return;
+            } else {
+                fullScreen = '<span class="rwd-fullscreen rwd-icon">' +
+                    '<svg id="rwd-fullscreen-on" width="20px" height="20px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="134 -133 357 357" style="enable-background:new 134 -133 357 357;">' +
+                    '<g><g id="fullscreen"><path d="M165,96.5h-31V224h127.5v-31H165V96.5z M134-5.5h31V-82h96.5v-31H134V-5.5z M440,193h-76.5v31H491V96.5h-31V192z M363.5-103v21H460v76.5h31V-113H363.5z"></path>' +
+                    '</g></g></svg>' +
+                    '<svg id="rwd-fullscreen-off" width="20px" height="20px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="134 -133 357 357" style="enable-background:new 134 -133 357 357;">' +
+                    '<g><g id="fullscreen-exit"><path d="M134, 127.5h 96.5V 224h 31V 96.5H 114V 147.5z M210.5 -36.5H 134v 31h 127.5V -133h -31V -36.5z M363.5, 224h 31v -96.5H 491v -31H 363.5V 224z M394.5 -56.5V -133h -31V -5.5H 491v -31H 395.5z"></path>' +
+                    '</g></g></svg>' +
+                    '</span>';
+                switch (hugeit_resp_lightbox_obj.hugeit_lightbox_lightboxView) {
+                    case 'view1':
+                    default:
+                        $('.rwd-cont').find('.rwd-toolbar').append(fullScreen);
+                        break;
+                    case 'view2':
+                        $('.rwd-cont').find('.rwd-bar').append(fullScreen);
+                        break;
+                    case 'view4':
+                        $(fullScreen).insertBefore('.rwd-title');
+                        break;
+                }
+                this.fullScreen();
+            }
+        }
+    };
+
+    Modul.prototype.requestFullscreen = function() {
+        var el = document.documentElement;
+
+        if (el.requestFullscreen) {
+            el.requestFullscreen();
+        } else if (el.msRequestFullscreen) {
+            el.msRequestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+            el.mozRequestFullScreen();
+        } else if (el.webkitRequestFullscreen) {
+            el.webkitRequestFullscreen();
+        }
+    };
+
+    Modul.prototype.exitFullscreen = function() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    };
+
+    Modul.prototype.fullScreen = function() {
+        var $object = this;
+
+        $(document).on('fullscreenchange.rwd-container webkitfullscreenchange.rwd-container mozfullscreenchange.rwd-container MSFullscreenChange.rwd-container', function() {
+            $('.rwd-cont').toggleClass('rwd-fullscreen-on');
+        });
+
+        $('.rwd-cont').find('.rwd-fullscreen').on('click.rwd-container', function() {
+            if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                $object.requestFullscreen();
+            } else {
+                $object.exitFullscreen();
+            }
+        });
+
+        $(window).on('keydown', function(e){
+           if(e.keyCode === 27){
+               console.log(1);
+           }
+        });
+
+    };
+
     Modul.prototype.initFullWidth = function () {
         var $object = this,
             $fullWidth, $fullWidthOn;
 
-        $fullWidth = '<svg id="rwd-fullwidth" width="20px" height="20px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="134 -133 357 357" style="enable-background:new 134 -133 357 357;">' +
-            '<g><g id="fullscreen"><path d="M165,96.5h-31V224h127.5v-31H165V96.5z M134-5.5h31V-82h96.5v-31H134V-5.5z M440,193h-76.5v31H491V96.5h-31V192z M363.5-103v21H460v76.5h31V-113H363.5z"></path>' +
-            '</g></g></svg>';
+        $fullWidth = '<svg id="rwd-fullwidth" width="50px" height="36px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 700" style="enable-background:new 0 0 960 560;">' +
+            '<g><path d="M769.4,280L651.7,397.6l0.1-90.5L543.1,307l0-54.3l108.6,0.1l0.1-90.5L769.4,280z M416.4,306.9l-108.6-0.1l-0.1,90.5' +
+            'L190.2,279.6L307.9,162l-0.1,90.5l108.6,0.1L416.4,306.9z M416.4,306.9"/></g></svg>';
 
-        $fullWidthOn = '<svg id="rwd-fullwidth_on" width="20px" height="20px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="134 -133 357 357" style="enable-background:new 134 -133 357 357;">' +
-            '<g><g id="fullscreen-exit"><path d="M134, 127.5h 96.5V 224h 31V 96.5H 114V 147.5z M210.5 -36.5H 134v 31h 127.5V -133h -31V -36.5z M363.5, 224h 31v -96.5H 491v -31H 363.5V 224z M394.5 -56.5V -133h -31V -5.5H 491v -31H 395.5z"></path>' +
-            '</g></g></svg>';
+        $fullWidthOn = '<svg  id="rwd-fullwidth_on" width="50px" height="36px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 700" style="enable-background:new 0 0 960 560;">' +
+            '<path d="M516,280.3l117.3-118l0.3,90.5l108.6-0.3l0.2,54.3l-108.6,0.3l0.3,90.5L516,280.3z M217.3,252.8l108.6-0.3l-0.2-90.5' +
+            'l117.9,117.4l-117.4,118l-0.2-90.5l-108.6,0.3L217.3,252.8z M416.4,306.9"/></svg>';
 
         if (this.dataL.modulSettings.fullwidth) {
             var fullwidth = '<span class="rwd-fullwidth rwd-icon">' + $fullWidth + $fullWidthOn + '</span>';
@@ -2107,22 +2193,21 @@
     Modul.prototype.destroy = function () {
         var $object = this;
 
-        $object.dataL.$element.off('.rwd-container.zoom');
         $(window).off('.rwd-container.zoom');
-        $object.dataL.$item.off('.rwd-container.zoom');
-        $object.dataL.$element.off('.rwd-container.zoom');
-        $object.dataL.$cont.removeClass('rwd-zoomed');
+        $('.rwd-cont').removeClass('rwd-zoomed');
         clearTimeout($object.zoomabletimeout);
         $object.zoomabletimeout = false;
 
-        if (this.dataL.modulSettings.thumbnail === 'true' && this.dataL.$items.length > 1) {
+        if (hugeit_resp_lightbox_obj.hugeit_lightbox_thumbs === 'true') {
             $(window).off('resize.rwd-container.thumb orientationchange.rwd-container.thumb keydown.rwd-container.thumb');
-            this.$thumbCont.remove();
-            this.dataL.$cont.removeClass('rwd-has-thumb');
+            $('.rwd-cont').removeClass('rwd-has-thumb');
             $('.cont-inner').css({
                 height: '100%'
             });
         }
+
+        $object.exitFullscreen();
+        $(document).off('fullscreenchange.rwd-container webkitfullscreenchange.rwd-container mozfullscreenchange.rwd-container MSFullscreenChange.rwd-container');
     };
 
     $.fn.lightbox.lightboxModul.modul = Modul;

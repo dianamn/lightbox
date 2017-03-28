@@ -216,6 +216,21 @@ require_once 'free_banner.php';
 					</ul>
 				</div>
 			</div>
+			<div>
+				<label for="hugeit_lightbox_fullscreen_effect"><?php _e('Full Screen Effect','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Check to activate full screen effect.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<input type="hidden" value="false" name="params[hugeit_lightbox_fullscreen_effect]"/>
+				<input type="checkbox"
+					   id="hugeit_lightbox_fullscreen_effect" <?php if ($hugeit_resp_lightbox_values['hugeit_lightbox_fullscreen_effect'] == 'true') {
+					echo 'checked="checked"';
+				} ?> name="params[hugeit_lightbox_fullscreen_effect]" value="true"/>
+			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
 			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
@@ -664,7 +679,7 @@ require_once 'free_banner.php';
 					   size="10"/>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -1010px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -970px;">
 			<h3>Lightbox Watermark styles<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 											  class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -871,7 +886,7 @@ require_once 'free_banner.php';
 				<input type="hidden" id="img_watermark_hidden_new" value="<?php echo $hugeit_resp_default_lightbox_values['hugeit_lightbox_watermark_img_src_new']; ?>">
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -345px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -305px;">
 			<h3><?php _e('Zoom Options','lightbox');?><img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 														   class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -932,7 +947,7 @@ require_once 'free_banner.php';
 				</select>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -85px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -45px;">
 			<h3>Social Share Buttons<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 										 class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
