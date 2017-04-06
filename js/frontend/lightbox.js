@@ -475,11 +475,14 @@
                 $color = 'rgba(0,0,0,.9)';
                 break;
         }
+
+        if(hugeit_resp_lightbox_obj.hugeit_lightbox_rightclick_protection === 'true'){
             setTimeout(function () {
-            $('.rwd-container').bind('contextmenu', function () {
-                return false;
-            });
-        }, 50);
+                $('.rwd-container').bind('contextmenu', function () {
+                    return false;
+                });
+            }, 50);
+        }
 
         if(this.settings.showBorder){
             $('.rwd-container').css({
@@ -518,11 +521,11 @@
     };
 
     Lightbox.prototype.isVideo = function (src, index) {
-
-        var youtube, vimeo;
+        var youtube, vimeo, dailymotion;
 
         youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
         vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
+        dailymotion = src.match(/^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/);
 
         if (youtube) {
             return {
@@ -531,6 +534,10 @@
         } else if (vimeo) {
             return {
                 vimeo: vimeo
+            };
+        } else if (dailymotion) {
+            return {
+                dailymotion: dailymotion
             };
         }
     };
@@ -1264,7 +1271,8 @@
 
             var $videoSlide = $object.dataL.$item.eq(prevIndex),
                 youtubePlayer = $videoSlide.find('.rwd-youtube').get(0),
-                vimeoPlayer = $videoSlide.find('.rwd-vimeo').get(0);
+                vimeoPlayer = $videoSlide.find('.rwd-vimeo').get(0),
+                dailymotionPlayer = $videoSlide.find('.rwd-dailymotion').get(0);
 
             if (youtubePlayer) {
                 youtubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
@@ -1274,13 +1282,15 @@
                 } catch (e) {
                     console.error('Make sure you have included froogaloop2 js');
                 }
+            } else if (dailymotionPlayer) {
+                dailymotionPlayer.contentWindow.postMessage('play', '*');
             }
 
             var src;
             src = $object.dataL.$items.eq(index).attr('href');
 
             var isVideo = $object.dataL.isVideo(src, index) || {};
-            if (isVideo.youtube || isVideo.vimeo) {
+            if (isVideo.youtube || isVideo.vimeo || isVideo.dailymotion) {
                 $object.dataL.$cont.addClass($object.dataL.modulSettings.classPrefix + 'hide-download');
                 $object.dataL.$cont.addClass($object.dataL.modulSettings.classPrefix + 'hide-actual-size');
                 $object.dataL.$cont.addClass($object.dataL.modulSettings.classPrefix + 'hide-fullwidth');
@@ -1313,6 +1323,12 @@
 
             video = '<iframe class="' + this.dataL.modulSettings.classPrefix + 'video-object ' + this.dataL.modulSettings.classPrefix + 'vimeo ' + addClass + '" width="560" height="315"  src="//player.vimeo.com/video/' + isVideo.vimeo[1] + a + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 
+        } else if (isVideo.dailymotion) {
+
+            a = '?wmode=opaque&autoplay=' + autoplay + '&api=postMessage';
+
+            video = '<iframe class="rwd-video-object rwd-dailymotion ' + addClass + '" width="560" height="315" src="//www.dailymotion.com/embed/video/' + isVideo.dailymotion[2] + a + '" frameborder="0" allowfullscreen></iframe>';
+      
         }
 
         return video;
@@ -1402,11 +1418,11 @@
         var $object = this,
             $fullWidth, $fullWidthOn;
 
-        $fullWidth = '<svg id="rwd-fullwidth" width="50px" height="36px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 700" style="enable-background:new 0 0 960 560;">' +
+        $fullWidth = '<svg id="rwd-fullwidth" width="50px" height="25px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 500" style="enable-background:new 0 0 960 560;">' +
             '<g><path d="M769.4,280L651.7,397.6l0.1-90.5L543.1,307l0-54.3l108.6,0.1l0.1-90.5L769.4,280z M416.4,306.9l-108.6-0.1l-0.1,90.5' +
             'L190.2,279.6L307.9,162l-0.1,90.5l108.6,0.1L416.4,306.9z M416.4,306.9"/></g></svg>';
 
-        $fullWidthOn = '<svg  id="rwd-fullwidth_on" width="50px" height="36px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 700" style="enable-background:new 0 0 960 560;">' +
+        $fullWidthOn = '<svg  id="rwd-fullwidth_on" width="50px" height="25px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 500" style="enable-background:new 0 0 960 560;">' +
             '<path d="M516,280.3l117.3-118l0.3,90.5l108.6-0.3l0.2,54.3l-108.6,0.3l0.3,90.5L516,280.3z M217.3,252.8l108.6-0.3l-0.2-90.5' +
             'l117.9,117.4l-117.4,118l-0.2-90.5l-108.6,0.3L217.3,252.8z M416.4,306.9"/></svg>';
 
@@ -2026,6 +2042,8 @@
                 } else if (isVideo.vimeo) {
                     thumbImg = '//i.vimeocdn.com/video/error_' + vimeoErrorThumbSize + '.jpg';
                     vimeoId = isVideo.vimeo[1];
+                } else if (isVideo.dailymotion) {
+                    thumbImg = '//www.dailymotion.com/thumbnail/video/' + isVideo.dailymotion[2];
                 }
             } else {
                 thumbImg = thumb;
@@ -2100,22 +2118,17 @@
         if (this.left < 0) {
             this.left = 0;
         }
-
-        if (this.dataL.rwdalleryOn) {
-            if (!$thumb.hasClass('on')) {
-                this.dataL.$cont.find('.rwd-thumb').css('transition-duration', this.dataL.modulSettings.speed + 'ms');
-            }
-
-            if (!this.dataL.effectsSupport()) {
-                $thumb.animate({
-                    left: -this.left + 'px'
-                }, this.dataL.modulSettings.speed);
-            }
-        } else {
-            if (!this.dataL.effectsSupport()) {
-                $thumb.css('left', -this.left + 'px');
-            }
+        
+        if (!$thumb.hasClass('on')) {
+            this.dataL.$cont.find('.rwd-thumb').css('transition-duration', this.dataL.modulSettings.speed + 'ms');
         }
+
+        if (!this.dataL.effectsSupport()) {
+            $thumb.animate({
+                left: -this.left + 'px'
+            }, this.dataL.modulSettings.speed);
+        }
+            
         if(!$('.rwd-thumb').hasClass('thumb_move')){
             this.dataL.$cont.find('.rwd-thumb').css({
                 transform: 'translate3d(-' + (this.left) + 'px, 0px, 0px)'
