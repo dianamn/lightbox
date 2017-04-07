@@ -1283,7 +1283,7 @@
                     console.error('Make sure you have included froogaloop2 js');
                 }
             } else if (dailymotionPlayer) {
-                dailymotionPlayer.contentWindow.postMessage('play', '*');
+                dailymotionPlayer.contentWindow.postMessage('pause', '*');
             }
 
             var src;
