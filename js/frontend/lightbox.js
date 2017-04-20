@@ -32,7 +32,7 @@
         slideAnimationType: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_slideAnimationType, /*  effect_1   effect_2    effect_3
          effect_4   effect_5    effect_6
          effect_7   effect_8    effect_9   */
-        lightboxView: hugeit_resp_lightbox_obj.hugeit_lightbox_lightboxView,              //  view1, view2, view3, view4, view5
+        lightboxView: hugeit_resp_lightbox_obj.hugeit_lightbox_lightboxView,              //  view1, view2, view3, view4, view5, view6
         speed: hugeit_resp_lightbox_obj.hugeit_lightbox_speed_new,
         width: hugeit_resp_lightbox_obj.hugeit_lightbox_width_new + '%',
         height: hugeit_resp_lightbox_obj.hugeit_lightbox_height_new + '%',
@@ -189,10 +189,12 @@
             subHtmlCont1 = '', subHtmlCont2 = '', subHtmlCont3 = '',
             close1 = '', close2 = '', socialIcons = '',
             template, $arrows, $next, $prev,
-            $_next, $_prev, $close_bg, $download_bg, $download_bg_, $contInner;
+            $_next, $_prev, $close_bg, $download_bg, $download_bg_, $contInner, $view;
+
+        $view = (this.settings.lightboxView === 'view6') ? 'rwd-view6' : '';
 
         this.$body.append(
-            this.objects.overlay = $('<div class="' + this.settings.classPrefix + 'overlay"></div>')
+            this.objects.overlay = $('<div class="' + this.settings.classPrefix + 'overlay ' + $view + '"></div>')
         );
         this.objects.overlay.css('transition-duration', this.settings.overlayDuration + 'ms');
 
@@ -270,6 +272,7 @@
                 close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
             case 'view5':
+            case 'view6':
                 $_next = '<svg class="next_bg" width="22px" height="44px" fill="#999" x="0px" y="0px"' +
                     'viewBox="0 0 40 70" style="enable-background:new 0 0 40 70;" xml:space="preserve">' +
                     '<path id="XMLID_2_" class="st0" d="M3.3,1.5L1.8,2.9l31.8,31.8c0.5,0.5,0.5,0.9,0,1.4L1.8,67.9l1.5,1.4c0.3,0.5,0.9,0.5,1.4,0' +
@@ -300,11 +303,11 @@
                 '</div>';
         }
 
-        if (this.settings.socialSharing && this.settings.lightboxView !== 'view5') {
+        if (this.settings.socialSharing && (this.settings.lightboxView !== 'view5' || this.settings.lightboxView !== 'view6')) {
             socialIcons = '<div class="' + this.settings.classPrefix + 'socialIcons"><button class="shareLook">share</button></div>';
         }
 
-        $contInner = (this.settings.lightboxView === 'view5') ? '<div class="contInner">' + subHtmlCont3 + '</div>' : '';
+        $contInner = (this.settings.lightboxView === 'view5' || this.settings.lightboxView === 'view6') ? '<div class="contInner">' + subHtmlCont3 + '</div>' : '';
         
         template = '<div class="' + this.settings.classPrefix + 'cont ">' +
             '<div class="rwd-container rwd-' + this.settings.lightboxView + '">' +
@@ -378,6 +381,16 @@
                     top: '45px'
                 });
                 break;
+            case 'view5':
+                jQuery('.cont-inner').css({
+                    width: '60%'
+                });
+                break;
+            case 'view6':
+                jQuery('.cont-inner').css({
+                    width: '80%'
+                });
+                break;
         }
 
         $object.objects.overlay.addClass('in');
@@ -409,6 +422,7 @@
                     $('<a id="' + $object.settings.classPrefix + 'download" target="_blank" download class="' + this.settings.classPrefix + 'download ' + $object.settings.classPrefix + 'icon">' + $download_bg + '</a>').insertBefore($('.rwd-title'));
                     break;
                 case 'view5':
+                case 'view6':
                     $('.rwd-toolbar').append('<a id="' + $object.settings.classPrefix + 'download" target="_blank" download class="' + this.settings.classPrefix + 'download ' + $object.settings.classPrefix + 'icon">' + $download_bg_ + '</a>');
                     break;
             }
@@ -475,11 +489,14 @@
                 $color = 'rgba(0,0,0,.9)';
                 break;
         }
+
+        if(hugeit_resp_lightbox_obj.hugeit_lightbox_rightclick_protection === 'true'){
             setTimeout(function () {
-            $('.rwd-container').bind('contextmenu', function () {
-                return false;
-            });
-        }, 50);
+                $('.rwd-container').bind('contextmenu', function () {
+                    return false;
+                });
+            }, 50);
+        }
 
         if(this.settings.showBorder){
             $('.rwd-container').css({
@@ -518,11 +535,11 @@
     };
 
     Lightbox.prototype.isVideo = function (src, index) {
-
-        var youtube, vimeo;
+        var youtube, vimeo, dailymotion;
 
         youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
         vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
+        dailymotion = src.match(/^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/);
 
         if (youtube) {
             return {
@@ -531,6 +548,10 @@
         } else if (vimeo) {
             return {
                 vimeo: vimeo
+            };
+        } else if (dailymotion) {
+            return {
+                dailymotion: dailymotion
             };
         }
     };
@@ -548,6 +569,7 @@
                     $('.' + this.settings.classPrefix + 'bar').append('<div class="barCont"></div>').append(this.objects.counter = $('<div id="' + this.settings.idPrefix + 'counter"></div>'));
                     break;
                 case 'view5':
+                case 'view6':
                     $('.contInner').append(this.objects.counter = $('<div id="' + this.settings.idPrefix + 'counter"></div>'));
                     break;
             }
@@ -622,7 +644,7 @@
         shareButtons += $object.settings.share.yummlyButton ? '<li><a title="Yummly" id="rwd-share-yummly" target="_blank"></a></li>' : '';
         shareButtons += '</ul>';
 
-        if (this.settings.lightboxView === 'view5') {
+        if (this.settings.lightboxView === 'view5' || this.settings.lightboxView === 'view6') {
             $('.contInner').append(shareButtons);
         } else {
             $('.' + this.settings.classPrefix + 'socialIcons').append(shareButtons);
@@ -766,7 +788,7 @@
             $object.setTitle(index);
         }, time);
 
-        if ($object.settings.lightboxView === 'view5') {
+        if ($object.settings.lightboxView === 'view5' || $object.settings.lightboxView === 'view6') {
             setTimeout(function () {
                 $object.setDescription(index);
             }, time);
@@ -1264,7 +1286,8 @@
 
             var $videoSlide = $object.dataL.$item.eq(prevIndex),
                 youtubePlayer = $videoSlide.find('.rwd-youtube').get(0),
-                vimeoPlayer = $videoSlide.find('.rwd-vimeo').get(0);
+                vimeoPlayer = $videoSlide.find('.rwd-vimeo').get(0),
+                dailymotionPlayer = $videoSlide.find('.rwd-dailymotion').get(0);
 
             if (youtubePlayer) {
                 youtubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
@@ -1274,13 +1297,15 @@
                 } catch (e) {
                     console.error('Make sure you have included froogaloop2 js');
                 }
+            } else if (dailymotionPlayer) {
+                dailymotionPlayer.contentWindow.postMessage('pause', '*');
             }
 
             var src;
             src = $object.dataL.$items.eq(index).attr('href');
 
             var isVideo = $object.dataL.isVideo(src, index) || {};
-            if (isVideo.youtube || isVideo.vimeo) {
+            if (isVideo.youtube || isVideo.vimeo || isVideo.dailymotion) {
                 $object.dataL.$cont.addClass($object.dataL.modulSettings.classPrefix + 'hide-download');
                 $object.dataL.$cont.addClass($object.dataL.modulSettings.classPrefix + 'hide-actual-size');
                 $object.dataL.$cont.addClass($object.dataL.modulSettings.classPrefix + 'hide-fullwidth');
@@ -1313,6 +1338,12 @@
 
             video = '<iframe class="' + this.dataL.modulSettings.classPrefix + 'video-object ' + this.dataL.modulSettings.classPrefix + 'vimeo ' + addClass + '" width="560" height="315"  src="//player.vimeo.com/video/' + isVideo.vimeo[1] + a + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 
+        } else if (isVideo.dailymotion) {
+
+            a = '?wmode=opaque&autoplay=' + autoplay + '&api=postMessage';
+
+            video = '<iframe class="rwd-video-object rwd-dailymotion ' + addClass + '" width="560" height="315" src="//www.dailymotion.com/embed/video/' + isVideo.dailymotion[2] + a + '" frameborder="0" allowfullscreen></iframe>';
+      
         }
 
         return video;
@@ -1402,11 +1433,11 @@
         var $object = this,
             $fullWidth, $fullWidthOn;
 
-        $fullWidth = '<svg id="rwd-fullwidth" width="50px" height="36px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 700" style="enable-background:new 0 0 960 560;">' +
+        $fullWidth = '<svg id="rwd-fullwidth" width="50px" height="25px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 500" style="enable-background:new 0 0 960 560;">' +
             '<g><path d="M769.4,280L651.7,397.6l0.1-90.5L543.1,307l0-54.3l108.6,0.1l0.1-90.5L769.4,280z M416.4,306.9l-108.6-0.1l-0.1,90.5' +
             'L190.2,279.6L307.9,162l-0.1,90.5l108.6,0.1L416.4,306.9z M416.4,306.9"/></g></svg>';
 
-        $fullWidthOn = '<svg  id="rwd-fullwidth_on" width="50px" height="36px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 700" style="enable-background:new 0 0 960 560;">' +
+        $fullWidthOn = '<svg  id="rwd-fullwidth_on" width="50px" height="25px" stroke="#999" fill="#999" x="0px" y="0px" viewBox="0 0 960 500" style="enable-background:new 0 0 960 560;">' +
             '<path d="M516,280.3l117.3-118l0.3,90.5l108.6-0.3l0.2,54.3l-108.6,0.3l0.3,90.5L516,280.3z M217.3,252.8l108.6-0.3l-0.2-90.5' +
             'l117.9,117.4l-117.4,118l-0.2-90.5l-108.6,0.3L217.3,252.8z M416.4,306.9"/></svg>';
 
@@ -1964,6 +1995,7 @@
                         }
                         break;
                     case 'view5':
+                    case 'view6':
                         switch($object.dataL.modulSettings.thumbPosition) {
                             case '0':
                                 $cont_.css({
@@ -2026,6 +2058,8 @@
                 } else if (isVideo.vimeo) {
                     thumbImg = '//i.vimeocdn.com/video/error_' + vimeoErrorThumbSize + '.jpg';
                     vimeoId = isVideo.vimeo[1];
+                } else if (isVideo.dailymotion) {
+                    thumbImg = '//www.dailymotion.com/thumbnail/video/' + isVideo.dailymotion[2];
                 }
             } else {
                 thumbImg = thumb;
@@ -2100,22 +2134,17 @@
         if (this.left < 0) {
             this.left = 0;
         }
-
-        if (this.dataL.rwdalleryOn) {
-            if (!$thumb.hasClass('on')) {
-                this.dataL.$cont.find('.rwd-thumb').css('transition-duration', this.dataL.modulSettings.speed + 'ms');
-            }
-
-            if (!this.dataL.effectsSupport()) {
-                $thumb.animate({
-                    left: -this.left + 'px'
-                }, this.dataL.modulSettings.speed);
-            }
-        } else {
-            if (!this.dataL.effectsSupport()) {
-                $thumb.css('left', -this.left + 'px');
-            }
+        
+        if (!$thumb.hasClass('on')) {
+            this.dataL.$cont.find('.rwd-thumb').css('transition-duration', this.dataL.modulSettings.speed + 'ms');
         }
+
+        if (!this.dataL.effectsSupport()) {
+            $thumb.animate({
+                left: -this.left + 'px'
+            }, this.dataL.modulSettings.speed);
+        }
+            
         if(!$('.rwd-thumb').hasClass('thumb_move')){
             this.dataL.$cont.find('.rwd-thumb').css({
                 transform: 'translate3d(-' + (this.left) + 'px, 0px, 0px)'

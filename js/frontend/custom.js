@@ -98,6 +98,10 @@ jQuery(document).ready(function () {
             }
         });
 
+        jQuery('a[href*="dailymotion.com"]').each(function () {
+            jQuery(this).addClass('dailymotion').addClass('responsove_lightbox');
+        });
+
         img.addClass('responsove_lightbox');
 
         jQuery("body a[href$='.jpg'], body a[href$='.jpeg'], body a[href$='.png'], body a[href$='.gif']").addClass('responsove_lightbox');

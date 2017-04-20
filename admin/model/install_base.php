@@ -60,3 +60,11 @@ if( !get_option( 'hugeit_lightbox_imageframe' ) ) {
 if( !get_option( 'hugeit_lightbox_fullscreen_effect' ) ) {
     update_option('hugeit_lightbox_fullscreen_effect', 'false');
 }
+
+if( !get_option( 'hugeit_lightbox_rightclick_protection' ) ) {
+    update_option('hugeit_lightbox_rightclick_protection', 'true');
+}
+
+if( !get_option( 'hugeit_lightbox_arrows_hover_effect' ) ) {
+    update_option('hugeit_lightbox_arrows_hover_effect', '0');
+}
