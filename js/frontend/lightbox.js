@@ -32,7 +32,7 @@
         slideAnimationType: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_slideAnimationType, /*  effect_1   effect_2    effect_3
          effect_4   effect_5    effect_6
          effect_7   effect_8    effect_9   */
-        lightboxView: hugeit_resp_lightbox_obj.hugeit_lightbox_lightboxView,              //  view1, view2, view3, view4, view5
+        lightboxView: hugeit_resp_lightbox_obj.hugeit_lightbox_lightboxView,              //  view1, view2, view3, view4, view5, view6
         speed: hugeit_resp_lightbox_obj.hugeit_lightbox_speed_new,
         width: hugeit_resp_lightbox_obj.hugeit_lightbox_width_new + '%',
         height: hugeit_resp_lightbox_obj.hugeit_lightbox_height_new + '%',
@@ -189,10 +189,12 @@
             subHtmlCont1 = '', subHtmlCont2 = '', subHtmlCont3 = '',
             close1 = '', close2 = '', socialIcons = '',
             template, $arrows, $next, $prev,
-            $_next, $_prev, $close_bg, $download_bg, $download_bg_, $contInner;
+            $_next, $_prev, $close_bg, $download_bg, $download_bg_, $contInner, $view;
+
+        $view = (this.settings.lightboxView === 'view6') ? 'rwd-view6' : '';
 
         this.$body.append(
-            this.objects.overlay = $('<div class="' + this.settings.classPrefix + 'overlay"></div>')
+            this.objects.overlay = $('<div class="' + this.settings.classPrefix + 'overlay ' + $view + '"></div>')
         );
         this.objects.overlay.css('transition-duration', this.settings.overlayDuration + 'ms');
 
@@ -270,6 +272,7 @@
                 close1 = '<span class="' + this.settings.classPrefix + 'close ' + $object.settings.classPrefix + 'icon">' + $close_bg + '</span>';
                 break;
             case 'view5':
+            case 'view6':
                 $_next = '<svg class="next_bg" width="22px" height="44px" fill="#999" x="0px" y="0px"' +
                     'viewBox="0 0 40 70" style="enable-background:new 0 0 40 70;" xml:space="preserve">' +
                     '<path id="XMLID_2_" class="st0" d="M3.3,1.5L1.8,2.9l31.8,31.8c0.5,0.5,0.5,0.9,0,1.4L1.8,67.9l1.5,1.4c0.3,0.5,0.9,0.5,1.4,0' +
@@ -300,11 +303,11 @@
                 '</div>';
         }
 
-        if (this.settings.socialSharing && this.settings.lightboxView !== 'view5') {
+        if (this.settings.socialSharing && (this.settings.lightboxView !== 'view5' || this.settings.lightboxView !== 'view6')) {
             socialIcons = '<div class="' + this.settings.classPrefix + 'socialIcons"><button class="shareLook">share</button></div>';
         }
 
-        $contInner = (this.settings.lightboxView === 'view5') ? '<div class="contInner">' + subHtmlCont3 + '</div>' : '';
+        $contInner = (this.settings.lightboxView === 'view5' || this.settings.lightboxView === 'view6') ? '<div class="contInner">' + subHtmlCont3 + '</div>' : '';
         
         template = '<div class="' + this.settings.classPrefix + 'cont ">' +
             '<div class="rwd-container rwd-' + this.settings.lightboxView + '">' +
@@ -378,6 +381,16 @@
                     top: '45px'
                 });
                 break;
+            case 'view5':
+                jQuery('.cont-inner').css({
+                    width: '60%'
+                });
+                break;
+            case 'view6':
+                jQuery('.cont-inner').css({
+                    width: '80%'
+                });
+                break;
         }
 
         $object.objects.overlay.addClass('in');
@@ -409,6 +422,7 @@
                     $('<a id="' + $object.settings.classPrefix + 'download" target="_blank" download class="' + this.settings.classPrefix + 'download ' + $object.settings.classPrefix + 'icon">' + $download_bg + '</a>').insertBefore($('.rwd-title'));
                     break;
                 case 'view5':
+                case 'view6':
                     $('.rwd-toolbar').append('<a id="' + $object.settings.classPrefix + 'download" target="_blank" download class="' + this.settings.classPrefix + 'download ' + $object.settings.classPrefix + 'icon">' + $download_bg_ + '</a>');
                     break;
             }
@@ -555,6 +569,7 @@
                     $('.' + this.settings.classPrefix + 'bar').append('<div class="barCont"></div>').append(this.objects.counter = $('<div id="' + this.settings.idPrefix + 'counter"></div>'));
                     break;
                 case 'view5':
+                case 'view6':
                     $('.contInner').append(this.objects.counter = $('<div id="' + this.settings.idPrefix + 'counter"></div>'));
                     break;
             }
@@ -629,7 +644,7 @@
         shareButtons += $object.settings.share.yummlyButton ? '<li><a title="Yummly" id="rwd-share-yummly" target="_blank"></a></li>' : '';
         shareButtons += '</ul>';
 
-        if (this.settings.lightboxView === 'view5') {
+        if (this.settings.lightboxView === 'view5' || this.settings.lightboxView === 'view6') {
             $('.contInner').append(shareButtons);
         } else {
             $('.' + this.settings.classPrefix + 'socialIcons').append(shareButtons);
@@ -773,7 +788,7 @@
             $object.setTitle(index);
         }, time);
 
-        if ($object.settings.lightboxView === 'view5') {
+        if ($object.settings.lightboxView === 'view5' || $object.settings.lightboxView === 'view6') {
             setTimeout(function () {
                 $object.setDescription(index);
             }, time);
@@ -1980,6 +1995,7 @@
                         }
                         break;
                     case 'view5':
+                    case 'view6':
                         switch($object.dataL.modulSettings.thumbPosition) {
                             case '0':
                                 $cont_.css({

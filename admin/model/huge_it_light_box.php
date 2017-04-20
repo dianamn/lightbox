@@ -180,7 +180,8 @@ class Hugeit_Lightbox_Model {
 			'hugeit_lightbox_showBorder'               		=> 'false',
 			'hugeit_lightbox_imageframe'                    => 'frame_0',
 			'hugeit_lightbox_fullscreen_effect'     		=> 'false',
-			'hugeit_lightbox_rightclick_protection'     	=> 'true'
+			'hugeit_lightbox_rightclick_protection'     	=> 'true',
+			'hugeit_lightbox_arrows_hover_effect'           => '0'
 		);
 		return $options;
 	}

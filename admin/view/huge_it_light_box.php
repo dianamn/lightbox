@@ -70,6 +70,9 @@ require_once 'free_banner.php';
 					<option <?php selected( 'view5', esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_lightboxView']) ); ?>
 						value="view5">5
 					</option>
+					<option <?php selected( 'view6', esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_lightboxView']) ); ?>
+						value="view6">6
+					</option>
 				</select>
 			</div>
 			<div class="has-background">
@@ -693,8 +696,44 @@ require_once 'free_banner.php';
 					   value="#C9C9C9"
 					   size="10"/>
 			</div>
+			<div class="has-background">
+				<label for="lightbox_arrow_hover_effect"><?php _e('Arrows hover effect','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Arrows hover effect. It works in view1, view4, view5 and view6.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<select id="lightbox_arrow_hover_effect" name="params[hugeit_lightbox_arrows_hover_effect]">
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_arrows_hover_effect']) == '0') {
+						echo 'selected="selected"';
+					} ?> value="0"><?php _e('None','lightbox');?>
+					</option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_arrows_hover_effect']) == '1') {
+						echo 'selected="selected"';
+					} ?> value="1"><?php _e('1','lightbox');?>
+					</option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_arrows_hover_effect']) == '2') {
+						echo 'selected="selected"';
+					} ?> value="2"><?php _e('2','lightbox');?>
+					</option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_arrows_hover_effect']) == '3') {
+						echo 'selected="selected"';
+					} ?> value="3"><?php _e('3','lightbox');?>
+					</option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_arrows_hover_effect']) == '4') {
+						echo 'selected="selected"';
+					} ?> value="4"><?php _e('4','lightbox');?>
+					</option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['hugeit_lightbox_arrows_hover_effect']) == '5') {
+						echo 'selected="selected"';
+					} ?> value="5"><?php _e('5','lightbox');?>
+					</option>
+				</select>
+			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -930px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -970px;">
 			<h3>Lightbox Watermark styles<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 											  class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -901,7 +940,7 @@ require_once 'free_banner.php';
 				<input type="hidden" id="img_watermark_hidden_new" value="<?php echo esc_html($hugeit_resp_default_lightbox_values['hugeit_lightbox_watermark_img_src_new']); ?>">
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -265px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -310px;">
 			<h3><?php _e('Zoom Options','lightbox');?><img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 														   class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -962,7 +1001,7 @@ require_once 'free_banner.php';
 				</select>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -5px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -50px;">
 			<h3>Social Share Buttons<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 										 class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -1162,7 +1201,20 @@ require_once 'free_banner.php';
 				</div>
 			</div>
 		</div>
-
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -90px;">
+			<h3>Statistics</h3>
+			<div id="lightbox_stat_type">
+				<input type="button" class="button_stat active" value="<?php _e('Past 24 Hours','lightbox');?>">
+				<input type="button" class="button_stat" value="<?php _e('Past Month','lightbox');?>">
+				<input type="button" class="button_stat" value="<?php _e('Past Year','lightbox');?>">
+			</div>
+			<div class="lightbox_statistics">
+				<div class="wrapper past_hours active">
+					<canvas id='c1' data-id="label1"></canvas>
+					<div id="label1">text</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="lightbox-options-list"
 	     class="unique-type-options-wrapper <?php if ( esc_html($hugeit_lightbox_values['hugeit_lightbox_type']) == 'old_type' ) {
@@ -1363,7 +1415,7 @@ require_once 'free_banner.php';
 				       disabled="disabled"/>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -130px;">
 			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 			                   class="hugeit_lightbox_pro_logo"></h3>
 
@@ -1523,7 +1575,7 @@ require_once 'free_banner.php';
 				       disabled="disabled"/>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top:0px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -130px;">
 			<h3>Positioning<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 			                    class="hugeit_lightbox_pro_logo"></h3>
 
