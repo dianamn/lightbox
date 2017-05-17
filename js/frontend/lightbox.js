@@ -16,7 +16,7 @@
         this.lightboxModul = {};
         this.$item = '';
         this.$cont = '';
-        this.$items = this.$body.find('a.responsove_lightbox');
+        this.$items = this.$body.find('a.responsive_lightbox');
 
         this.settings = $.extend({}, this.constructor.defaults, options);
 
@@ -36,7 +36,7 @@
         speed: hugeit_resp_lightbox_obj.hugeit_lightbox_speed_new,
         width: hugeit_resp_lightbox_obj.hugeit_lightbox_width_new + '%',
         height: hugeit_resp_lightbox_obj.hugeit_lightbox_height_new + '%',
-        videoMaxWidth: hugeit_resp_lightbox_obj.hugeit_lightbox_videoMaxWidth,
+        videoMaxWidth: '700',
         sizeFix: true, //not for option
         overlayDuration: +hugeit_gen_resp_lightbox_obj.hugeit_lightbox_overlayDuration,
         slideAnimation: true, //not for option
@@ -72,6 +72,7 @@
         wURL: hugeit_resp_lightbox_obj.hugeit_lightbox_watermark_link,
         watermarkURL: hugeit_resp_lightbox_obj.hugeit_lightbox_watermark_url,
         wURLnewTab: hugeit_resp_lightbox_obj.hugeit_lightbox_watermark_url_new_tab,
+        openCloseType: hugeit_resp_lightbox_obj.lightbox_open_close_effect,
         share: {
             facebookButton: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_facebookButton,
             twitterButton: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_twitterButton,
@@ -90,7 +91,79 @@
     Lightbox.prototype.init = function () {
 
         var $object = this,
-            $hash;
+            $hash,
+            $openCloseType;
+
+        switch(this.settings.openCloseType){
+            case '0':
+                $openCloseType = {
+                    0: 'open_0',
+                    1: 'close_0'
+                };
+                break;
+            case '1':
+                $openCloseType = {
+                    0: 'open_1',
+                    1: 'close_1'
+                };
+                break;
+            case '2':
+                $openCloseType = {
+                    0: 'open_1_r',
+                    1: 'close_1_r'
+                };
+                break;
+            case '3':
+                $openCloseType = {
+                    0: 'open_2',
+                    1: 'close_2'
+                };
+                break;
+            case '4':
+                $openCloseType = {
+                    0: 'open_2_r',
+                    1: 'close_2_r'
+                };
+                break;
+            case '5':
+                $openCloseType = {
+                    0: 'open_3',
+                    1: 'close_3'
+                };
+                break;
+            case '6':
+                $openCloseType = {
+                    0: 'open_3_r',
+                    1: 'close_3_r'
+                };
+                break;
+            case '7':
+                $openCloseType = {
+                    0: 'open_4',
+                    1: 'close_4'
+                };
+                break;
+            case '8':
+                $openCloseType = {
+                    0: 'open_4_r',
+                    1: 'close_4_r'
+                };
+                break;
+            case '9':
+                $openCloseType = {
+                    0: 'open_5',
+                    1: 'close_5'
+                };
+                break;
+            case '10':
+                $openCloseType = {
+                    0: 'open_5_r',
+                    1: 'close_5_r'
+                };
+                break;
+        }
+
+        this.settings.openCloseType = $openCloseType;
 
         $hash = window.location.hash;
 
@@ -321,6 +394,30 @@
             close2 + subHtmlCont1 + socialIcons + '</div>' +
             '</div>' +
             '</div>';
+
+        switch($object.settings.openCloseType[0]){
+            case 'open_1':
+            case 'open_2':
+            case 'open_3':
+            case 'open_4':
+            case 'open_5':
+            case 'open_1_r':
+            case 'open_2_r':
+            case 'open_3_r':
+            case 'open_4_r':
+            case 'open_5_r':
+                setTimeout(function(){
+                    $object.$cont.addClass('rwd-visible');
+                    $('.rwd-container').addClass($object.settings.openCloseType[0]);
+                }, 0);
+                break;
+            default:
+                $('.rwd-container').addClass($object.settings.openCloseType[0]);
+                setTimeout(function () {
+                    $object.$cont.addClass('rwd-visible');
+                }, this.settings.overlayDuration);
+                break;
+        }
 
         if ($object.settings.socialSharing) {
             setTimeout(function () {
@@ -780,6 +877,20 @@
                 $object.$cont.addClass($object.settings.classPrefix + 'hide-zoom-in');
                 $object.$cont.addClass($object.settings.classPrefix + 'hide-zoom-out');
             }
+        } else {
+            if(this.$cont.find('.' + $object.settings.classPrefix + 'item').eq(index).find('iframe').length){
+                $object.$cont.addClass($object.settings.classPrefix + 'hide-download');
+                $object.$cont.addClass($object.settings.classPrefix + 'hide-actual-size');
+                $object.$cont.addClass($object.settings.classPrefix + 'hide-fullwidth');
+                $object.$cont.addClass($object.settings.classPrefix + 'hide-zoom-in');
+                $object.$cont.addClass($object.settings.classPrefix + 'hide-zoom-out');
+            } else {
+                $object.$cont.removeClass($object.settings.classPrefix + 'hide-download');
+                $object.$cont.removeClass($object.settings.classPrefix + 'hide-actual-size');
+                $object.$cont.removeClass($object.settings.classPrefix + 'hide-fullwidth');
+                $object.$cont.removeClass($object.settings.classPrefix + 'hide-zoom-in');
+                $object.$cont.removeClass($object.settings.classPrefix + 'hide-zoom-out');
+            }
         }
 
         this.$element.trigger('onBeforeSlide.rwd-container', [prevIndex, index, fromSlide, fromThumb]);
@@ -1163,42 +1274,73 @@
 
     Lightbox.prototype.destroy = function (d) {
 
-        var $object = this;
+        var $object = this, $time;
 
-        clearInterval($object.interval);
+        $('.rwd-container').removeClass(this.settings.openCloseType[0]).addClass(this.settings.openCloseType[1]);
 
-        $object.$body.removeClass($object.settings.classPrefix + 'on');
-
-        $(window).scrollTop($object.prevScrollTop);
-
-        if (d) {
-            $.removeData($object.el, 'lightbox');
+        switch(this.settings.openCloseType[1]){
+            case 'close_1':
+            case 'close_1_r':
+                $time = 1000;
+                break;
+            case 'close_2':
+            case 'close_2_r':
+                $time = 300;
+                break;
+            case 'close_3':
+            case 'close_4':
+            case 'close_3_r':
+            case 'close_4_r':
+                $time = 340;
+                break;
+            case 'close_5':
+            case 'close_5_r':
+                $time = 250;
+                break;
         }
 
-        ($object.settings.socialSharing && (window.location.hash = ''));
+        $('html, body').on('mousewheel', function(){
+            return false;
+        });
 
-        this.$element.off('.rwd-container');
+        setTimeout(function(){
+            clearInterval($object.interval);
 
-        $(window).off('.rwd-container');
+            $object.$body.removeClass($object.settings.classPrefix + 'on');
 
-        if ($object.$cont) {
-            $object.$cont.removeClass($object.settings.classPrefix + 'visible');
-        }
+            $(window).scrollTop($object.prevScrollTop);
 
-        $object.objects.overlay.removeClass('in');
-
-        setTimeout(function () {
-            if ($object.$cont) {
-                $object.$cont.remove();
+            if (d) {
+                $.removeData($object.el, 'lightbox');
             }
 
-            $object.objects.overlay.remove();
+            ($object.settings.socialSharing && (window.location.hash = ''));
 
-        }, $object.settings.overlayDuration + 50);
+            $object.$element.off('.rwd-container');
 
-        window.scrollTo(0, $object.$_y_);
+            $(window).off('.rwd-container');
 
-        $.fn.lightbox.lightboxModul['modul'].prototype.destroy();
+            if ($object.$cont) {
+                $object.$cont.removeClass($object.settings.classPrefix + 'visible');
+            }
+
+            $object.objects.overlay.removeClass('in');
+
+            setTimeout(function () {
+                if ($object.$cont) {
+                    $object.$cont.remove();
+                }
+
+                $object.objects.overlay.remove();
+
+            }, $object.settings.overlayDuration + 50);
+
+            window.scrollTo(0, $object.$_y_);
+
+            $.fn.lightbox.lightboxModul['modul'].prototype.destroy();
+
+            $('html, body').off('mousewheel');
+        }, $time);
     };
 
     $.fn.lightbox = function (options) {
@@ -1253,7 +1395,7 @@
         idPrefix: 'rwd-',
         classPrefix: 'rwd-',
         attrPrefix: 'data-',
-        videoMaxWidth: hugeit_gen_resp_lightbox_obj.hugeit_lightbox_videoMaxWidth,
+        videoMaxWidth: '700',
         fullwidth: hugeit_resp_lightbox_obj.hugeit_lightbox_fullwidth_effect === 'true',
         zoom: hugeit_resp_lightbox_obj.hugeit_lightbox_zoom,
         scale: +hugeit_resp_lightbox_obj.hugeit_lightbox_zoomsize / 10,
@@ -2022,16 +2164,10 @@
     };
 
     Modul.prototype.buildThumbs = function() {
-        var $object = this;
-        var thumbList = '';
-        var vimeoErrorThumbSize = '';
-        var $thumb;
-        var html = '<div class="rwd-thumb-cont">' +
-            '<div class="rwd-thumb group">' +
-            '</div>' +
-            '</div>';
-
-        vimeoErrorThumbSize = '100x75';
+        var $object = this,
+            thumbList = '',
+            $thumb,
+            html = '<div class="rwd-thumb-cont"><div class="rwd-thumb group"></div></div>';
 
         $object.dataL.$cont.addClass('rwd-has-thumb');
 
@@ -2056,7 +2192,7 @@
                 if (isVideo.youtube) {
                     thumbImg = '//img.youtube.com/vi/' + isVideo.youtube[1] + '/1.jpg';
                 } else if (isVideo.vimeo) {
-                    thumbImg = '//i.vimeocdn.com/video/error_' + vimeoErrorThumbSize + '.jpg';
+                    thumbImg = '//i.vimeocdn.com/video/error_100x75.jpg';
                     vimeoId = isVideo.vimeo[1];
                 } else if (isVideo.dailymotion) {
                     thumbImg = '//www.dailymotion.com/thumbnail/video/' + isVideo.dailymotion[2];

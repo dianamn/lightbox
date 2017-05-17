@@ -249,6 +249,29 @@ require_once 'free_banner.php';
 					echo 'checked="checked"';
 				} ?> name="params[hugeit_lightbox_fullscreen_effect]" value="true"/>
 			</div>
+			<div class="has-background">
+				<label for="lightbox_open_close_effect"><?php _e('Lightbox open/close effect','lightbox');?>
+					<div class="help">?
+						<div class="help-block">
+							<span class="pnt"></span>
+							<p><?php _e('Lightbox open/close effect.','lightbox');?></p>
+						</div>
+					</div>
+				</label>
+				<select id="lightbox_open_close_effect" name="params[lightbox_open_close_effect]">
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '0') {echo 'selected="selected"';} ?> value="0"><?php _e('None','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '1') {echo 'selected="selected"';} ?> value="1"><?php _e('UnFold','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '2') {echo 'selected="selected"';} ?> value="2"><?php _e('UnFold R','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '3') {echo 'selected="selected"';} ?> value="3"><?php _e('BlowUp','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '4') {echo 'selected="selected"';} ?> value="4"><?php _e('BlowUp R','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '5') {echo 'selected="selected"';} ?> value="5"><?php _e('RoadRunner','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '6') {echo 'selected="selected"';} ?> value="6"><?php _e('RoadRunner R','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '7') {echo 'selected="selected"';} ?> value="7"><?php _e('Runner','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '8') {echo 'selected="selected"';} ?> value="8"><?php _e('Runner R','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '9') {echo 'selected="selected"';} ?> value="9"><?php _e('Rotate','lightbox');?></option>
+					<option <?php if (esc_html($hugeit_resp_lightbox_values['lightbox_open_close_effect']) == '10') {echo 'selected="selected"';} ?> value="10"><?php _e('Rotate R','lightbox');?></option>
+				</select>
+			</div>
 		</div>
 		<div class="options-block hugeit-lightbox-pro-option">
 			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
@@ -733,7 +756,7 @@ require_once 'free_banner.php';
 				</select>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -970px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -920px;">
 			<h3>Lightbox Watermark styles<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 											  class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -940,7 +963,7 @@ require_once 'free_banner.php';
 				<input type="hidden" id="img_watermark_hidden_new" value="<?php echo esc_html($hugeit_resp_default_lightbox_values['hugeit_lightbox_watermark_img_src_new']); ?>">
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -310px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -260px;">
 			<h3><?php _e('Zoom Options','lightbox');?><img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 														   class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -1001,7 +1024,7 @@ require_once 'free_banner.php';
 				</select>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -50px;">
+		<div class="options-block hugeit-lightbox-pro-option">
 			<h3>Social Share Buttons<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 										 class="hugeit_lightbox_pro_logo"></h3>
 			<div class="has-background">
@@ -1088,7 +1111,7 @@ require_once 'free_banner.php';
 						</tr>
 						<tr>
 							<td>
-								<label for="hugeit_lightbox_vkButton"><?php _e('Vkontakte','lightbox');?>
+								<label for="hugeit_lightbox_vkButton"><?php _e('VKontakte','lightbox');?>
 									<input type="checkbox"
 									       id="hugeit_lightbox_vkButton" <?php if ( esc_html($hugeit_resp_default_lightbox_values['hugeit_lightbox_vkButton']) == 'true' ) {
 										echo 'checked="checked"';
@@ -1201,7 +1224,7 @@ require_once 'free_banner.php';
 				</div>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -90px;">
+		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -40px;">
 			<h3>Statistics</h3>
 			<div id="lightbox_stat_type">
 				<input type="button" class="button_stat active" value="<?php _e('Past 24 Hours','lightbox');?>">
