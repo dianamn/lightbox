@@ -68,3 +68,7 @@ if( !get_option( 'hugeit_lightbox_rightclick_protection' ) ) {
 if( !get_option( 'hugeit_lightbox_arrows_hover_effect' ) ) {
     update_option('hugeit_lightbox_arrows_hover_effect', '0');
 }
+
+if( !get_option( 'lightbox_open_close_effect' ) ) {
+    update_option('lightbox_open_close_effect', '0');
+}
