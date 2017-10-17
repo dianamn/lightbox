@@ -187,7 +187,9 @@
             }
         }
 
-        (($object.settings.preload > $object.$items.length) && ($object.settings.preload = $object.$items.length));
+        if (($object.settings.preload <= $object.$items.length) && ($object.settings.preload = $object.$items.length)){
+            $object.settings.preload = $object.$items.length;
+        }
 
         $object.$items.on('click.rwdcustom', function (event) {
 
