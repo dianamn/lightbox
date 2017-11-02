@@ -107,6 +107,7 @@ jQuery(document).ready(function () {
         jQuery("body a[href$='.jpg'], body a[href$='.jpeg'], body a[href$='.png'], body a[href$='.gif']").addClass('responsive_lightbox');
         // solve conflict with Portfolio Gallery
         jQuery('.portfolio-gallery-content a').removeClass('responsive_lightbox');
+        jQuery('.huge_it_portfolio_popup_list a').removeClass('responsive_lightbox');
         // solve conflict with Gallery
         jQuery('.gallery-img-content a').removeClass('responsive_lightbox');
         // solve conflict with Gallery Video
