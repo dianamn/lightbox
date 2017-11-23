@@ -1456,7 +1456,7 @@ require_once 'free_banner.php';
 				       disabled="disabled"/>
 			</div>
 		</div>
-		<div class="options-block hugeit-lightbox-pro-option" style="margin-top: -130px;">
+		<div class="options-block hugeit-lightbox-pro-option" >
 			<h3>Dimensions<img src="<?php echo plugins_url( '../../images/pro-icon.png', __FILE__ ) ?>"
 			                   class="hugeit_lightbox_pro_logo"></h3>
 

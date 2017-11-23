@@ -89,7 +89,7 @@ body{overflow-x:hidden}
 .rwd-share-buttons li,.rwd-share-buttons li a{display:inline-block;width:25px;height:25px;margin-right:5px}
 .rwd-view7 .rwd-share-buttons li,.rwd-view7 .rwd-share-buttons li a{max-width:40px;max-height:40px;min-width:20px;min-height:20px;width:40px;height:40px}
 .rwd-view7 .view7_share, .rwd-view7 .rwd-share-buttons li,.rwd-view7 .rwd-share-buttons li a {background: rgba(0,0,0,0.2)}
-.rwd-view7 .rwd-share-buttons li{margin: -3px 0 0 0}
+.rwd-view7 .rwd-share-buttons li{margin: -7px 0 0 0}
 .rwd-view7 .rwd-share-buttons li a{width:100%;height:100%;margin:0}
 .rwd-view7 .rwd-share-buttons li svg{padding:5px;position:relative;max-width:100%;max-height:100%}
 .rwd-view7 .rwd-share-buttons li a#rwd-share-tumblr svg{padding: 9px 9px 9px 7px;}
