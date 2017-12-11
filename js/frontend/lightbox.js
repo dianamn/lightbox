@@ -898,7 +898,7 @@
                         left: ($(window).width() - $_width) / 2 + $_width - 30 + 'px'
                     });
                 }
-            }, 500);
+            }, 0);
         }
     };
 
