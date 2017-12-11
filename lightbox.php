@@ -220,7 +220,7 @@ function get_images_url(){
         //in case wordpress is adding thumb dimensions for image
         if ($id == null) {
             $image_name =  substr($image_url,strrpos($image_url,"/")+1,  strrpos($image_url,"-")-strrpos($image_url,"/")-1);
-            $query = "SELECT ID FROM $wpdb->posts WHERE guid RLIKE '.+\/$image_name\..{2,3}'";
+            $query = "SELECT ID FROM $wpdb->posts WHERE guid RLIKE '.+\/$image_name\..{2,3}$'";
             $id = $wpdb->get_var($query);
         }
         $attachment = get_post( $id );
