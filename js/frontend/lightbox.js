@@ -291,6 +291,9 @@
                 $('.rwd-view7-title').width($('.rwd-container').width() * 0.2 - 46);
                 $('.rwd-view7-desc').width($('.rwd-container').width() * 0.2 - 36);
 
+                setTimeout(function(){
+                    $('.rwd-view7-desc').height($('.view7_inner').height() - 79);
+                }, 200);
 
                 $w = 256;
                 $l = $('.tool_bar .rwd-icon:not(.zoom_cont)').length;
@@ -831,7 +834,9 @@
                     $('.rwd-view7-title').eq(index).width($('.rwd-container').width() * 0.2 - 46);
                     $('.rwd-view7-desc').eq(index).width($('.rwd-container').width() * 0.2 - 36);
 
-
+                    setTimeout(function(){
+                        $('.rwd-view7-desc').height($('.view7_inner').height() - ($object.settings.showTitle ? 120 : 9));
+                    }, 200);
 
                     $_left = ($_inner.classList.contains('is_close')) ? 0 : $('.rwd-container').width() * 0.1;
 
@@ -1154,7 +1159,7 @@
                 $('.rwd-view7-title').eq(index).html($title);
                 setTimeout(function(){
                     $('.rwd-view7-title').eq(index).html($title);
-                }, 2000);
+                }, 200);
             }
         }
     };
@@ -1172,7 +1177,7 @@
                 setTimeout(function(){
                     $('.rwd-view7-desc').eq(index).html($description);
                     $('.rwd-view7-desc').eq(index).attr('title', $description);
-                }, 2000);
+                }, 200);
             }
         }
     };
