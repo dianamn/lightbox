@@ -107,6 +107,7 @@ jQuery(document).ready(function () {
         jQuery("body a[href$='.jpg'], body a[href$='.jpeg'], body a[href$='.png'], body a[href$='.gif']").addClass('responsive_lightbox');
         // solve conflict with Portfolio Gallery
         jQuery('.portfolio-gallery-content a').removeClass('responsive_lightbox');
+        jQuery('.huge_it_portfolio_popup_list a').removeClass('responsive_lightbox');
         // solve conflict with Gallery
         jQuery('.gallery-img-content a').removeClass('responsive_lightbox');
         // solve conflict with Gallery Video
@@ -120,7 +121,7 @@ jQuery(document).ready(function () {
 
 jQuery(window).load(function(){
     var urls = [];
-    jQuery("body a[href$='.jpg'] > img, body a[href$='.jpeg'] > img, body a[href$='.png'] > img, body a[href$='.gif'] > img").each(function(){
+    jQuery("body a[href$='.jpg'] > img, body a[href$='.jpeg'] > img, body a[href$='.png'] > img, body a[href$='.gif'] > img, body a[href*='www.youtube.com'] > img").each(function(){
         urls.push(jQuery(this).attr('src'));
     });
 

@@ -187,7 +187,9 @@
             }
         }
 
-        (($object.settings.preload > $object.$items.length) && ($object.settings.preload = $object.$items.length));
+        if (($object.settings.preload <= $object.$items.length) && ($object.settings.preload = $object.$items.length)){
+            $object.settings.preload = $object.$items.length;
+        }
 
         $object.$items.on('click.rwdcustom', function (event) {
 
@@ -1155,6 +1157,9 @@
         if($object.settings.lightboxView === 'view7'){
             if(this.settings.showTitle){
                 $('.rwd-view7-title').eq(index).html($title);
+                setTimeout(function(){
+                    $('.rwd-view7-title').eq(index).html($title);
+                }, 200);
             }
         }
     };
@@ -1169,8 +1174,10 @@
 
         if($object.settings.lightboxView === 'view7'){
             if(this.settings.showDesc){
-                $('.rwd-view7-desc').eq(index).html($description);
-                $('.rwd-view7-desc').eq(index).attr('title', $description);
+                setTimeout(function(){
+                    $('.rwd-view7-desc').eq(index).html($description);
+                    $('.rwd-view7-desc').eq(index).attr('title', $description);
+                }, 200);
             }
         }
     };
