@@ -16,7 +16,7 @@ class Hugeit_Lightbox_Model {
 				update_option( $name, wp_unslash( sanitize_text_field( $value ) ) );
 			}
 			?>
-			<div class="updated"><p><strong><?php _e( 'Item Saved' ); ?></strong></p></div>
+			<div class="updated"><p><strong><?php _e( 'Item Saved','lightbox' ); ?></strong></p></div>
 			<?php
 		}
 	}
