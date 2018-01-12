@@ -4,7 +4,7 @@
 			advanced features, settings to customize every area of the plugin, then check out the Full License plugin. The
 			full version of the plugin is available in 3 different packages of one-time payment.
     </p>
-    <a target="_blank" href="https://goo.gl/3mO1hS" class="button-primary" target="_blank"><?php _e('Purchase a License', 'portfolio-gallery' ); ?></a>
+    <a target="_blank" href="https://goo.gl/3mO1hS" class="button-primary" target="_blank"><?php _e('Purchase a License', 'lightbox' ); ?></a>
 </div>
 <div class="lightbox">
     <div class="lightbox-block">

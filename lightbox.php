@@ -7,6 +7,7 @@ Version: 2.1.0
 Author: Huge-IT
 Author URI: https://huge-it.com
 License: GPL
+Text Domain: lightbox
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
