@@ -8,6 +8,7 @@ Author: Huge-IT
 Author URI: https://huge-it.com
 License: GPL
 Text Domain: lightbox
+Domain Path: /languages
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
