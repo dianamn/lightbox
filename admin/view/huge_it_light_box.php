@@ -371,7 +371,7 @@ require_once 'free_banner.php';
 				} ?> name="params[hugeit_lightbox_slideshow_auto_new]" value="true"/>
 			</div>
 			<div class="has-background">
-				<label for="hugeit_lightbox_slideshow_speed_new"><?php _e('lideshow interval','lightbox');?>S
+				<label for="hugeit_lightbox_slideshow_speed_new"><?php _e('Slideshow interval','lightbox');?>
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>

@@ -221,10 +221,16 @@ function get_images_url(){
         if ($id == null) {
             $image_name =  substr($image_url,strrpos($image_url,"/")+1,  strrpos($image_url,"-")-strrpos($image_url,"/")-1);
             $query = "SELECT ID FROM $wpdb->posts WHERE guid RLIKE '.+\/$image_name\..{2,3}$'";
-            $id = $wpdb->get_var($query);
+            if (strlen($image_name)>0){
+                $id = $wpdb->get_var($query);
+            }
+
         }
         $attachment = get_post( $id );
-        $description = $attachment->post_content;
+        if (strlen($attachment->post_content)>1) {
+            $description = $attachment->post_content;
+        } else $description = " ";
+
         array_push($all_urls,$description);
     }
 

@@ -121,7 +121,7 @@ jQuery(document).ready(function () {
 
 jQuery(window).load(function(){
     var urls = [];
-    jQuery("body a[href$='.jpg'] > img, body a[href$='.jpeg'] > img, body a[href$='.png'] > img, body a[href$='.gif'] > img, body a[href*='www.youtube.com'] > img").each(function(){
+    jQuery("body a[href$='.jpg'] > img, body a[href$='.jpeg'] > img, body a[href$='.png'] > img, body a[href$='.gif'] > img, body a[href*='www.youtube.com'], body a[href*='vimeo.com'] > img").each(function(){
         urls.push(jQuery(this).attr('src'));
     });
 
@@ -132,6 +132,7 @@ jQuery(window).load(function(){
 
     jQuery.post(ajaxUrl, data, function (response) {
         if(response) {
+            console.log(response);
             response = JSON.parse(response);
             for(var i = 0; i < jQuery("a.responsive_lightbox").length; i++){
                 jQuery("a.responsive_lightbox").eq(i).find('img').attr('data-description', response[i]);
