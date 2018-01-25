@@ -20,7 +20,7 @@ register_activation_hook( __FILE__, 'hugeit_lightbox_activate' );
 define( 'HUGEIT_LIGHTBOX_PLUGIN_DIR', WP_PLUGIN_DIR . "/" . plugin_basename( dirname( __FILE__ ) ) );
 
 function hugeit_lightbox_options_panel() {
-	add_menu_page( 'Theme page title', 'Huge IT Lightbox', 'manage_options', 'huge_it_light_box', 'hugeit_lightbox', plugins_url( 'images/huge_it_lightboxLogoHover-for_menu.png', __FILE__ ) );
+	add_menu_page( 'Theme page title', 'Huge-IT Lightbox', 'manage_options', 'huge_it_light_box', 'hugeit_lightbox', plugins_url( 'images/huge_it_lightboxLogoHover-for_menu.png', __FILE__ ) );
 	$page_option      = add_submenu_page( 'huge_it_light_box', 'Lightbox', 'Lightbox', 'manage_options', 'huge_it_light_box', 'hugeit_lightbox' );
 	$featured_plugins = add_submenu_page( 'huge_it_light_box', 'Featured Plugins', 'Featured Plugins', 'manage_options', 'huge_it_featured_plugins', 'hugeit_featured_plugins' );
 	$licensing        = add_submenu_page( 'huge_it_light_box', 'Licensing', 'Licensing', 'manage_options', 'huge_it_licensing', 'huge_it_licensing' );
