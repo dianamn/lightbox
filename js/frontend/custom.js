@@ -115,6 +115,8 @@ jQuery(document).ready(function () {
         // solve conflict with Catalog
         jQuery('.huge_it_catalog_container a').removeClass('responsive_lightbox');
         jQuery('section[id^="huge_it_catalog_content_"] a, div[id^="main-slider_"] a').removeClass('responsive_lightbox');
+        // solve conflict with Soliloquy Carousel
+        jQuery('.soliloquy-item a').removeClass('responsive_lightbox');
 
     }
 });
