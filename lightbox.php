@@ -203,11 +203,11 @@ function hugeit_lightbox_plugins_url() {
 	return plugins_url( '', __FILE__ );
 }
 
-add_action('wp_ajax_lightbox_description', 'get_images_url');
-add_action('wp_ajax_nopriv_lightbox_description', 'get_images_url');
+add_action('wp_ajax_lightbox_description', 'hg_lightbox_get_images_url');
+add_action('wp_ajax_nopriv_lightbox_description', 'hg_lightbox_get_images_url');
 
 
-function get_images_url(){
+function hg_lightbox_get_images_url(){
     global $wpdb;
     $all_urls = array();
     $image_urls = array();
