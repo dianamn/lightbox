@@ -396,3 +396,4 @@ a#rwd-share-yummly:not(.view7):hover{background:url('../../images/share(1).png')
 .rwd-support.effect_9 .rwd-item.rwd-next-slide{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}
 .rwd-support.effect_9 .rwd-item.rwd-current{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);opacity:1}
 .rwd-support.effect_9 .rwd-item.rwd-current,.rwd-support.effect_9 .rwd-item.rwd-next-slide,.rwd-support.effect_9 .rwd-item.rwd-prev-slide{-webkit-transition:-webkit-transform 1s cubic-bezier(0,0,.25,1) 0s,opacity .1s ease 0s;-moz-transition:-moz-transform 1s cubic-bezier(0,0,.25,1) 0s,opacity .1s ease 0s;-o-transition:-o-transform 1s cubic-bezier(0,0,.25,1) 0s,opacity .1s ease 0s;transition:transform 1s cubic-bezier(0,0,.25,1) 0s,opacity .1s ease 0s}
+.vimeo_black_back{background-color: black;}

@@ -483,7 +483,7 @@ require_once 'free_banner.php';
 				       id="hugeit_lightbox_arrows" checked/>
 			</div>
 			<div>
-				<label for="hugeit_lightbox_mouseWheel"><?php _e('Mouse Wheel Navigaion','lightbox');?>
+				<label for="hugeit_lightbox_mouseWheel"><?php _e('Navigaion','lightbox');?>
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>
@@ -1340,7 +1340,7 @@ require_once 'free_banner.php';
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>
-							<p><?php _e('Set the speed of opening the popup in milliseconds..','lightbox');?></p>
+							<p><?php _e('Set the speed of opening the popup in milliseconds.','lightbox');?></p>
 						</div>
 					</div>
 				</label>
@@ -1386,7 +1386,7 @@ require_once 'free_banner.php';
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>
-							<p><?php _e('Choose for automatically opening the firs content after reloading.','lightbox');?></p>
+							<p><?php _e('Choose for automatically opening the first content after reloading.','lightbox');?></p>
 						</div>
 					</div>
 				</label>
@@ -1491,7 +1491,7 @@ require_once 'free_banner.php';
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>
-							<p><?php _e('Change the high of content.','lightbox');?></p>
+							<p><?php _e('Change the height of content.','lightbox');?></p>
 						</div>
 					</div>
 				</label>
@@ -1543,7 +1543,7 @@ require_once 'free_banner.php';
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>
-							<p><?php _e('Set the initial high of opening.','lightbox');?></p>
+							<p><?php _e('Set the initial height of opening.','lightbox');?></p>
 						</div>
 					</div>
 				</label>
@@ -1625,7 +1625,7 @@ require_once 'free_banner.php';
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>
-							<p><?php _e('If �true� the popup does not change it�s position while scrolling up or down.','lightbox');?></p>
+							<p><?php _e('If �true� the popup does not change its position while scrolling up or down.','lightbox');?></p>
 						</div>
 					</div>
 				</label>
@@ -1734,7 +1734,7 @@ require_once 'free_banner.php';
 					<div class="help">?
 						<div class="help-block">
 							<span class="pnt"></span>
-							<p><?php _e('Set the widtht of Lightbox watermark.','lightbox');?></p>
+							<p><?php _e('Set the width of Lightbox watermark.','lightbox');?></p>
 						</div>
 					</div>
 				</label>

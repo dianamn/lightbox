@@ -115,13 +115,16 @@ jQuery(document).ready(function () {
         // solve conflict with Catalog
         jQuery('.huge_it_catalog_container a').removeClass('responsive_lightbox');
         jQuery('section[id^="huge_it_catalog_content_"] a, div[id^="main-slider_"] a').removeClass('responsive_lightbox');
+        // solve conflict with Soliloquy Carousel
+        jQuery('.soliloquy-item a').removeClass('responsive_lightbox');
 
     }
 });
 
+
 jQuery(window).load(function(){
     var urls = [];
-    jQuery("body a[href$='.jpg'] > img, body a[href$='.jpeg'] > img, body a[href$='.png'] > img, body a[href$='.gif'] > img, body a[href*='www.youtube.com'], body a[href*='vimeo.com'] > img").each(function(){
+    jQuery("body a[href$='.jpg'] > img, body a[href$='.jpeg'] > img, body a[href$='.png'] > img, body a[href$='.gif'] > img, body a[href*='www.youtube.com'] > img, body a[href*='vimeo.com'] > img").each(function(){
         urls.push(jQuery(this).attr('src'));
     });
 

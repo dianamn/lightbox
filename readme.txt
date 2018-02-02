@@ -385,7 +385,7 @@ This section will allow to make changes of the Lightbox’s settings. Most of th
 *  Overlay close. Choose to close the content by clicking on the overlay.
 *  ESC close. Choose to close the content with esc button.
 *  Keyboard navigation. Set to change the images with left and right buttons.
-*  Loop content. If “true” give the ability to move from the last image to the first image while navigation.
+*  Loop content. If “true” give the ability to move from the last image to the first image while navigating.
 *  Show close button. Choose whether to display close button.
 *  Previous button text. Change the content of next button text.
 *  Next button text. Change the content of next button text.
